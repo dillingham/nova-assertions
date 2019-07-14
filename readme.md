@@ -37,12 +37,21 @@ $this->be(factory(User::class)->create());
 
 Request Nova's results with one of the following:
 
-| Method | Description |
-| - | - |
-| ->novaIndex($resource) | todo |
-| ->novaDetail($resource, $id) | todo |
-| ->novaCreate($resource) | todo |
-| ->novaEdit($resource, $id) | todo |
+```php
+$this->novaIndex($resource)
+$this->novaDetail($resource, $id)
+$this->novaCreate($resource)
+$this->novaEdit($resource, $id)
+```
+
+TODO:: Add filtering & query params
+->novaIndex('posts', [
+    Filter::class => 'value'
+]);
+
+TODO: Add other requests to index & detail
+Index requests filters & cards etc
+So should ->novaIndex. Store as $cardResponse for assertions
 
 ### Assert Http
 You can call **[http response methods](https://laravel.com/docs/5.8/http-tests#available-assertions)** as usual:
