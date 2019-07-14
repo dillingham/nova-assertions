@@ -50,8 +50,6 @@ You can call **[http response methods](https://laravel.com/docs/5.8/http-tests#a
 $response->assertOk();
 ```
 
-This package adds some nova specific assertions:
-
 ### Assert Fields
 
 Assert columns or form fields with the following:
@@ -74,7 +72,11 @@ $response->assertFieldsDontContains($users->pluck('id'));
 
 ### Assert Actions
 
+Coming soon
+
 ### Assert  Cards
+
+Coming soon
 
 ### Assert Authorization
 
