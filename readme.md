@@ -26,10 +26,18 @@ class UserTest extends TestCase
 }
 ```
 
+### Authentication
+Must act as a logged in user with access to Nova
+```php
+$this->be(factory(User::class)->create());
+```
+
 ### Requests
 
 - ->novaIndex($resource)
 - ->novaDetail($resource, $id)
+- ->novaCreate($resource)
+- ->novaEdit($resource, $id)
 
 ### Assert Fields
 
@@ -38,7 +46,9 @@ class UserTest extends TestCase
 
 ### Assert Authorization
 
-| Assertion | Description |
+The following assert against the auth user & Nova's use of policies
+
+| Method | Description |
 | - | - |
 | ->assertCanDelete() | assert user can delete |
 | ->assertCannotDelete() | assert user can not delete |
