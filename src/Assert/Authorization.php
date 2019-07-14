@@ -8,52 +8,52 @@ trait Authorization
 {
     public function assertCanDelete()
     {
-        $this->assertNovaAuthorized('Delete', true);
+        return $this->assertNovaAuthorized('Delete', true);
     }
 
     public function assertCannotDelete()
     {
-        $this->assertNovaAuthorized('Delete', false);
+        return $this->assertNovaAuthorized('Delete', false);
     }
 
     public function assertCanForceDelete()
     {
-        $this->assertNovaAuthorized('ForceDelete', true);
+        return $this->assertNovaAuthorized('ForceDelete', true);
     }
 
     public function assertCannotForceDelete()
     {
-        $this->assertNovaAuthorized('ForceDelete', false);
+        return $this->assertNovaAuthorized('ForceDelete', false);
     }
 
     public function assertCanRestore()
     {
-        $this->assertNovaAuthorized('Restore', true);
+        return $this->assertNovaAuthorized('Restore', true);
     }
 
     public function assertCannotRestore()
     {
-        $this->assertNovaAuthorized('Restore', false);
+        return $this->assertNovaAuthorized('Restore', false);
     }
 
     public function assertCanUpdate()
     {
-        $this->assertNovaAuthorized('Update', true);
+        return $this->assertNovaAuthorized('Update', true);
     }
 
     public function assertCannotUpdate()
     {
-        $this->assertNovaAuthorized('Update', false);
+        return $this->assertNovaAuthorized('Update', false);
     }
 
     public function assertCanView()
     {
-        $this->assertNovaAuthorized('View', true);
+        return $this->assertNovaAuthorized('View', true);
     }
 
     public function assertCannotView()
     {
-        $this->assertNovaAuthorized('View', false);
+        return $this->assertNovaAuthorized('View', false);
     }
 
     public function assertNovaAuthorized($action, $boolean = true)
