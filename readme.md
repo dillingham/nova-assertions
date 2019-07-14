@@ -77,7 +77,7 @@ The following assert against the auth user & Nova's use of policies
 | ->assertCanView() | assert user can view |
 | ->assertCannotView() | assert user can not view |
 
-You can call other json response methods too:
+You can call other **[http response methods](https://laravel.com/docs/5.8/http-tests#available-assertions)** too:
 
 ```php
 $this->novaIndex('users')
