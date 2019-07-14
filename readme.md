@@ -82,16 +82,16 @@ Coming soon
 The following assert against the auth user & **[Nova's use of policies](https://nova.laravel.com/docs/2.0/resources/authorization.html#authorization)**
 
 ```php
+$response->assertCanView();
+$response->assertCanUpdate();
 $response->assertCanDelete();
 $response->assertCanForceDelete();
 $response->assertCanRestore();
-$response->assertCanUpdate();
-$response->assertCanView();
 ```
 ```php
+$response->assertCannotView();
+$response->assertCannotUpdate();
 $response->assertCannotDelete();
 $response->assertCannotForceDelete();
 $response->assertCannotRestore();
-$response->assertCannotUpdate();
-$response->assertCannotView();
 ```
