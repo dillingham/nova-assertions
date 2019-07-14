@@ -18,8 +18,8 @@ class UserTest extends TestCase
     {
         $this->be(factory(User::class)->create());
 
-        $this->novaDetail('users', $user->id);
-            ->assertFieldEquals('email', $user->email);
+        $this->novaIndex('users');
+            ->assertFieldExists('email');
             ->assertCanUpdate()
             ->assertCannotDelete();
     }
@@ -27,7 +27,7 @@ class UserTest extends TestCase
 ```
 
 ### Authentication
-Must act as a logged in user with access to Nova
+Must act as a logged in user **[with access to Nova](https://nova.laravel.com/docs/2.0/installation.html#authorizing-nova)**
 ```php
 $this->be(factory(User::class)->create());
 ```
@@ -39,14 +39,18 @@ $this->be(factory(User::class)->create());
 - ->novaCreate($resource)
 - ->novaEdit($resource, $id)
 
-<!-- TODO: -->
-->novaBelongsTo('workflows', $id, 'users')
-    ->assertRelation($user->id, 'Brian')
+TODO
+->novaRelation('workflows')
+->novaRelation('workflows', $id, 'users')
 
 ### Assert Fields
 
-- ->assertFieldExists($attribute)
-- ->assertFieldEquals($attribute, $value)
+| Method | Description |
+| - | - |
+| assertFieldExists() | todo |
+| assertFieldMissing() | todo |
+| assertFieldEquals() | todo |
+| assertFieldDoesntEquals() | todo |
 
 ### Assert Authorization
 
