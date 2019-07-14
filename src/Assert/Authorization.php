@@ -8,60 +8,71 @@ trait Authorization
 {
     public function assertCanDelete()
     {
-        return $this->assertNovaAuthorized('Delete', true);
+        return $this->assertJsonFragment([
+            'authorizedToDelete' => true
+        ]);
     }
 
     public function assertCannotDelete()
     {
-        return $this->assertNovaAuthorized('Delete', false);
+        return $this->assertJsonFragment([
+            'authorizedToDelete' => false
+        ]);
     }
 
     public function assertCanForceDelete()
     {
-        return $this->assertNovaAuthorized('ForceDelete', true);
+        return $this->assertJsonFragment([
+            'authorizedToForceDelete' => true
+        ]);
     }
 
     public function assertCannotForceDelete()
     {
-        return $this->assertNovaAuthorized('ForceDelete', false);
+        return $this->assertJsonFragment([
+            'authorizedToForceDelete' => false
+        ]);
     }
 
     public function assertCanRestore()
     {
-        return $this->assertNovaAuthorized('Restore', true);
+        return $this->assertJsonFragment([
+            'authorizedToRestore' => true
+        ]);
     }
 
     public function assertCannotRestore()
     {
-        return $this->assertNovaAuthorized('Restore', false);
+        return $this->assertJsonFragment([
+            'authorizedToRestore' => false
+        ]);
     }
 
     public function assertCanUpdate()
     {
-        return $this->assertNovaAuthorized('Update', true);
+        return $this->assertJsonFragment([
+            'authorizedToUpdate' => true
+        ]);
     }
 
     public function assertCannotUpdate()
     {
-        return $this->assertNovaAuthorized('Update', false);
+        return $this->assertJsonFragment([
+            'authorizedToUpdate' => false
+        ]);
     }
 
     public function assertCanView()
     {
-        return $this->assertNovaAuthorized('View', true);
+        return $this->assertJsonFragment([
+            'authorizedToView' => true
+        ]);
     }
 
     public function assertCannotView()
     {
-        return $this->assertNovaAuthorized('View', false);
-    }
-
-    public function assertNovaAuthorized($action, $boolean = true)
-    {
-        $action = 'authorizedTo' . ucwords($action);
-
         return $this->assertJsonFragment([
-            $action => $boolean
+            'authorizedToView' => false
         ]);
     }
 }

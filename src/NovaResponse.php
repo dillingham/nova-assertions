@@ -16,15 +16,15 @@ class NovaResponse
         $this->originalJsonResponse = $originalJsonResponse;
     }
 
+    public function __get($property)
+    {
+        return $this->originalJsonResponse->$property;
+    }
+
     public function __call($method, $arguments)
     {
         $this->originalJsonResponse->$method(...$arguments);
 
         return $this;
-    }
-
-    public function __get($property)
-    {
-        return $this->originalJsonResponse->$property;
     }
 }
