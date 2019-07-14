@@ -43,7 +43,7 @@ Request Nova's results with one of the following:
 | ->novaCreate($resource) | todo |
 | ->novaEdit($resource, $id) | todo |
 
-# Assert Http
+### Assert Http
 You can call **[http response methods](https://laravel.com/docs/5.8/http-tests#available-assertions)** as usual:
 
 ```php
@@ -59,7 +59,7 @@ $this->novaIndex('users')
 
 This package adds some nova specific assertions:
 
-# Assert Fields
+### Assert Fields
 
 Assert columns or form fields with the following:
 
@@ -82,7 +82,7 @@ $response->assertFieldsContains($users->pluck('id'));
 $response->assertFieldsDontContains($users->pluck('id'));
 ```
 
-# Assert Authorization
+### Assert Authorization
 
 The following assert against the auth user & **[Nova's use of policies](https://nova.laravel.com/docs/2.0/resources/authorization.html#authorization)**
 
