@@ -58,20 +58,17 @@ Assert columns or form fields with the following:
 
 ```php
 $response->assertFieldExists('id');
-```
-```php
+
 $response->assertFieldMissing('password');
 ```
 ```php
 $response->assertFieldEquals('id', 1);
-```
-```php
+
 $response->assertFieldDoesntEquals('id', 2);
 ```
 ```php
 $response->assertFieldsContains($users->pluck('id'));
-```
-```php
+
 $response->assertFieldsDontContains($users->pluck('id'));
 ```
 
