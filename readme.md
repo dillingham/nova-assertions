@@ -27,7 +27,7 @@ class UserTest extends TestCase
 ```
 
 ### Authentication
-Must act as a logged in user **[with access to Nova](https://nova.laravel.com/docs/2.0/installation.html#authorizing-nova)**
+Log in a user that **[has access to Nova](https://nova.laravel.com/docs/2.0/installation.html#authorizing-nova)**
 ```php
 $this->be(factory(User::class)->create());
 ```
