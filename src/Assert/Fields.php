@@ -4,47 +4,44 @@ namespace NovaTesting\Assert;
 
 trait Fields
 {
-    public function assertFieldExists($attribute)
+    public function assertFieldsInclude($attribute, $value=null)
     {
-        return $this->assertJsonFragment([
-            'attribute' => $attribute,
-        ]);
+        return $this->fieldCheck($attribute, $value, 'assertJsonFragment');
     }
 
-    public function assertFieldMissing($attribute)
+    public function assertFieldsExclude($attribute, $value=null)
     {
-        return $this->assertJsonMissing([
-            'attribute' => $attribute,
-        ]);
+        return $this->fieldCheck($attribute, $value, 'assertJsonMissing');
     }
 
-    public function assertFieldEquals($attribute, $value)
+    protected function fieldCheck($attribute, $value = null, $method)
     {
-        return $this->assertJsonFragment([
-            'attribute' => $attribute,
-            'value' => $value,
-        ]);
-    }
-
-    public function assertFieldDoesntEquals($attribute, $value)
-    {
-        return $this->assertJsonMissing([
-            'attribute' => $attribute,
-            'value' => $value,
-        ]);
-    }
-
-    public function assertFieldsContains(array $items)
-    {
-        foreach ($items as $attribute => $value) {
-            $this->assertFieldEquals($attribute, $value);
+        if (!is_array($field) && is_null($value)) {
+            return $this->$method([
+                'attribute' => $attribute
+            ]);
         }
-    }
 
-    public function assertFieldsDontContains(array $items)
-    {
-        foreach ($items as $attribute => $value) {
-            $this->assertFieldDoesntEquals($attribute, $value);
+        if (!is_array($field) && !is_null($value)) {
+            return $this->$method([
+                'attribute' => $attribute,
+                'value' => $value,
+            ]);
         }
+
+        foreach ($attribute as $attr => $value) {
+            if (is_numeric($attr)) {
+                $this->$method([
+                    'attribute' => $value
+                ]);
+            } else {
+                $this->$method([
+                    'attribute' => $attr,
+                    'value' => $value,
+                ]);
+            }
+        }
+
+        return $this;
     }
 }

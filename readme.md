@@ -55,19 +55,18 @@ $response->assertOk();
 Assert columns or form fields with the following:
 
 ```php
-$response->assertFieldExists('id');
-
-$response->assertFieldMissing('password');
+$response->assertFieldsInclude('id');
+$response->assertFieldsInclude('id', $user->id);
+$response->assertFieldsInclude(['id', 'email']);
+$response->assertFieldsInclude(['id' => 1, 'email' => 'example']);
+$response->assertFieldsInclude($users->pluck('id));
 ```
 ```php
-$response->assertFieldEquals('id', 1);
-
-$response->assertFieldDoesntEquals('id', 2);
-```
-```php
-$response->assertFieldsContains($users->pluck('id'));
-
-$response->assertFieldsDontContains($users->pluck('id'));
+$response->assertFieldsExclude('id');
+$response->assertFieldsExclude('id', $user->id);
+$response->assertFieldsExclude(['id', 'email']);
+$response->assertFieldsExclude(['id' => 1, 'email' => 'example']);
+$response->assertFieldsExclude($users->pluck('id));
 ```
 
 ### Assert Actions
