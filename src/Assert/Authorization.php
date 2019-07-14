@@ -2,35 +2,78 @@
 
 namespace NovaTesting\Assert;
 
+use Illuminate\Support\Arr;
+
 trait Authorization
 {
     public function assertCanDelete()
     {
-        //  resource.authorizedToDelete: true
+        $this->assertNovaAuthorized('Delete', true);
+    }
+
+    public function assertCannotDelete()
+    {
+        $this->assertNovaAuthorized('Delete', false);
     }
 
     public function assertCanForceDelete()
     {
-        // resource.authorizedToForceDelete: false
+        $this->assertNovaAuthorized('ForceDelete', true);
+    }
+
+    public function assertCannotForceDelete()
+    {
+        $this->assertNovaAuthorized('ForceDelete', false);
     }
 
     public function assertCanRestore()
     {
-        // resource.authorizedToRestory: false
+        $this->assertNovaAuthorized('Restore', true);
+    }
+
+    public function assertCannotRestore()
+    {
+        $this->assertNovaAuthorized('Restore', false);
     }
 
     public function assertCanUpdate()
     {
-        // resource.authorizedToUpdate: false
+        $this->assertNovaAuthorized('Update', true);
+    }
+
+    public function assertCannotUpdate()
+    {
+        $this->assertNovaAuthorized('Update', false);
     }
 
     public function assertCanView()
     {
-        //
+        $this->assertNovaAuthorized('View', true);
     }
 
-    public function assertCanViewAny()
+    public function assertCannotView()
     {
-        //
+        $this->assertNovaAuthorized('View', false);
+    }
+
+    public function assertNovaAuthorized($action, $boolean = true)
+    {
+        $action = 'authorizedTo' . ucwords($action);
+
+        if (isset($this->original['resource'])) {
+            return $this->assertJson([
+                'resource' => [ $action => $boolean ]
+            ]);
+        }
+
+        if (isset($this->original['resources']) && count($this->original['resources'])) {
+            return $this->assertJson([
+                'resources' => [
+                    0 => [ $action => $boolean ]
+                ]
+            ]);
+        }
+
+        abort(500, 'No results');
     }
 }
