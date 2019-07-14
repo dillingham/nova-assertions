@@ -44,7 +44,7 @@ Request Nova's results with one of the following:
 | ->novaEdit($resource, $id) | todo |
 
 # Assert Http
-You can call **[http response methods] as(https://laravel.com/docs/5.8/http-tests#available-assertions)** as usual:
+You can call **[http response methods](https://laravel.com/docs/5.8/http-tests#available-assertions)** as usual:
 
 ```php
 $this->novaIndex('users')
