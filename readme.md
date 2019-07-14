@@ -47,14 +47,7 @@ Request Nova's results with one of the following:
 You can call **[http response methods](https://laravel.com/docs/5.8/http-tests#available-assertions)** as usual:
 
 ```php
-$this->novaIndex('users')
-    ->assertOk();
-    ->assertUnauthorized();
-    ->assertStatus(200);
-    ->assertSessionHas()
-    ->assertJson([
-        //
-    ]);
+$response->assertOk();
 ```
 
 This package adds some nova specific assertions:
