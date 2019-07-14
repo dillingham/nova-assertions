@@ -34,23 +34,31 @@ $this->be(factory(User::class)->create());
 
 ### Requests
 
-- ->novaIndex($resource)
-- ->novaDetail($resource, $id)
-- ->novaCreate($resource)
-- ->novaEdit($resource, $id)
+Request Nova's results with one of the following:
+
+| Method | Description |
+| - | - |
+| ->novaIndex($resource) | todo |
+| ->novaDetail($resource, $id) | todo |
+| ->novaCreate($resource) | todo |
+| ->novaEdit($resource, $id) | todo |
 
 TODO
+
 ->novaRelation('workflows')
+
 ->novaRelation('workflows', $id, 'users')
 
 ### Assert Fields
 
+Assert the columns or form fields with the following:
+
 | Method | Description |
 | - | - |
-| assertFieldExists() | todo |
-| assertFieldMissing() | todo |
-| assertFieldEquals() | todo |
-| assertFieldDoesntEquals() | todo |
+| ->assertFieldExists() | todo |
+| ->assertFieldMissing() | todo |
+| ->assertFieldEquals() | todo |
+| ->assertFieldDoesntEquals() | todo |
 
 ### Assert Authorization
 
