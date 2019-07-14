@@ -18,6 +18,8 @@ class NovaResponse
     public function __call($method, $arguments)
     {
         $this->originalJsonResponse->$method(...$arguments);
+
+        return $this;
     }
 
     public function __get($property)
