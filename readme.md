@@ -18,10 +18,11 @@ class UserTest extends TestCase
     {
         $this->be(factory(User::class)->create());
 
-        $this->novaIndex('users');
-            ->assertFieldExists('email');
+        $this->novaIndex('users')
             ->assertCanUpdate()
-            ->assertCannotDelete();
+            ->assertCannotDelete()
+            ->assertFieldsInclude('email')
+            ->assertFieldsExclude('password');
     }
 }
 ```
