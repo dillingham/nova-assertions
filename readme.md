@@ -44,7 +44,7 @@ Request Nova's results with one of the following:
 | ->novaEdit($resource, $id) | todo |
 
 # Assert Http
-You can call other **[http response methods](https://laravel.com/docs/5.8/http-tests#available-assertions)** also:
+You can call **[http response methods] as(https://laravel.com/docs/5.8/http-tests#available-assertions)** as usual:
 
 ```php
 $this->novaIndex('users')
@@ -57,29 +57,23 @@ $this->novaIndex('users')
     ]);
 ```
 
+This package adds some nova specific assertions:
+
 # Assert Fields
 
 Assert columns or form fields with the following:
 
-#### assertFieldExists
-todo
 ```php
-$response->assertFieldExists();
+$response->assertFieldExists('id');
 ```
-#### assertFieldMissing
-todo
 ```php
-$response->assertFieldMissing();
+$response->assertFieldMissing('password');
 ```
-#### assertFieldEquals
-todo
 ```php
-$response->assertFieldEquals();
+$response->assertFieldEquals('id', 1);
 ```
-#### assertFieldDoesntEquals
-todo
 ```php
-$response->assertFieldDoesntEquals();
+$response->assertFieldDoesntEquals('id', 2);
 ```
 
 # Assert Authorization
