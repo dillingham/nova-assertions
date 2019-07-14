@@ -1,0 +1,17 @@
+{
+    "name": "dillingham/nova-assertions",
+    "description": "Nova api testing requests & assertions",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Brian Dillingham",
+            "email": "bdillingham88@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "NovaTesting\\": "src/"
+        }
+    }
+}
