@@ -1,6 +1,6 @@
 # Nova Assertions
 
-Work in progress. Not functional yet.
+Perform Nova requests & assert fields & authorization
 
 ### Installation
 
