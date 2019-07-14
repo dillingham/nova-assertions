@@ -75,37 +75,36 @@ $response->assertFieldsContains($users->pluck('id'));
 $response->assertFieldsDontContains($users->pluck('id'));
 ```
 
+### Assert Actions
+
+### Assert  Cards
+
 ### Assert Authorization
 
 The following assert against the auth user & **[Nova's use of policies](https://nova.laravel.com/docs/2.0/resources/authorization.html#authorization)**
 
 ```php
 $response->assertCanDelete();
-```
-```php
+
 $response->assertCannotDelete();
 ```
 ```php
 $response->assertCanForceDelete();
-```
-```php
+
 $response->assertCannotForceDelete();
 ```
 ```php
 $response->assertCanRestore();
-```
-```php
+
 $response->assertCannotRestore();
 ```
 ```php
 $response->assertCanUpdate();
-```
-```php
+
 $response->assertCannotUpdate();
 ```
 ```php
 $response->assertCanView();
-```
-```php
+
 $response->assertCannotView();
 ```
