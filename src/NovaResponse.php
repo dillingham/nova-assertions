@@ -2,11 +2,12 @@
 
 namespace NovaTesting;
 
+use NovaTesting\Assert\Fields;
 use NovaTesting\Assert\Authorization;
 
 class NovaResponse
 {
-    use Authorization;
+    use Authorization, Fields;
 
     protected $originalJsonResponse;
 
