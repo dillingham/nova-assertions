@@ -86,53 +86,33 @@ $response->assertFieldDoesntEquals();
 
 The following assert against the auth user & **[Nova's use of policies](https://nova.laravel.com/docs/2.0/resources/authorization.html#authorization)**
 
-#### assertCanDelete
-Assert that the authenticated user can delete
 ```php
 $response->assertCanDelete();
 ```
-#### assertCannotDelete
-Assert that the authenticated user can not delete
 ```php
 $response->assertCannotDelete();
 ```
-#### assertCanForceDelete
-Assert that the authenticated user can force delete
 ```php
 $response->assertCanForceDelete();
 ```
-#### assertCannotForceDelete
-Assert that the authenticated user can not force delete
 ```php
 $response->assertCannotForceDelete();
 ```
-#### assertCanRestore
-Assert that the authenticated user can restore
 ```php
 $response->assertCanRestore();
 ```
-#### assertCannotRestore
-Assert that the authenticated user can not restore
 ```php
 $response->assertCannotRestore();
 ```
-#### assertCanUpdate
-Assert that the authenticated user can update
 ```php
 $response->assertCanUpdate();
 ```
-#### assertCannotUpdate
-Assert that the authenticated user can not update
 ```php
 $response->assertCannotUpdate();
 ```
-#### assertCanView
-Assert that the authenticated user can view
 ```php
 $response->assertCanView();
 ```
-#### assertCannotView
-Assert that the authenticated user can not view
 ```php
 $response->assertCannotView();
 ```
