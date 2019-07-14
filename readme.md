@@ -51,21 +51,33 @@ TODO
 
 ### Assert Fields
 
-Assert the columns or form fields with the following:
+Assert columns or form fields with the following:
 
-| Method | Description |
-| - | - |
-| ->assertFieldExists() | todo |
-| ->assertFieldMissing() | todo |
-| ->assertFieldEquals() | todo |
-| ->assertFieldDoesntEquals() | todo |
+#### assertFieldExists
+todo
+```php
+$response->assertFieldExists();
+```
+#### assertFieldMissing
+todo
+```php
+$response->assertFieldMissing();
+```
+#### assertFieldEquals
+todo
+```php
+$response->assertFieldEquals();
+```
+#### assertFieldDoesntEquals
+todo
+```php
+$response->assertFieldDoesntEquals();
+```
 
 ### Assert Authorization
 
-The following assert against the auth user & Nova's use of policies
+The following assert against the auth user & **[Nova's use of policies](https://nova.laravel.com/docs/2.0/resources/authorization.html#authorization)**
 
-| Method | Description |
-| - | - |
 #### assertCanDelete
 assert user can delete
 ```php
