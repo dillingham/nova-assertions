@@ -83,5 +83,7 @@ You can call other **[http response methods](https://laravel.com/docs/5.8/http-t
 $this->novaIndex('users')
     ->assertOk();
     ->assertUnauthorized();
-    ->assertJson([]);
+    ->assertJson([
+        //
+    ]);
 ```
