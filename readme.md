@@ -74,7 +74,7 @@ todo
 $response->assertFieldDoesntEquals();
 ```
 
-### Assert Authorization
+## Assert Authorization
 
 The following assert against the auth user & **[Nova's use of policies](https://nova.laravel.com/docs/2.0/resources/authorization.html#authorization)**
 
