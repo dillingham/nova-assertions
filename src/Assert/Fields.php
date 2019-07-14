@@ -33,4 +33,18 @@ trait Fields
             'value' => $value,
         ]);
     }
+
+    public function assertFieldsContains(array $items)
+    {
+        foreach ($items as $attribute => $value) {
+            $this->assertFieldEquals($attribute, $value);
+        }
+    }
+
+    public function assertFieldsDontContains(array $items)
+    {
+        foreach ($items as $attribute => $value) {
+            $this->assertFieldDoesntEquals($attribute, $value);
+        }
+    }
 }

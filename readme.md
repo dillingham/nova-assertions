@@ -75,6 +75,12 @@ $response->assertFieldEquals('id', 1);
 ```php
 $response->assertFieldDoesntEquals('id', 2);
 ```
+```php
+$response->assertFieldsContains($users->pluck('id'));
+```
+```php
+$response->assertFieldsDontContains($users->pluck('id'));
+```
 
 # Assert Authorization
 
