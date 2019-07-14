@@ -43,13 +43,21 @@ Request Nova's results with one of the following:
 | ->novaCreate($resource) | todo |
 | ->novaEdit($resource, $id) | todo |
 
-TODO
+# Assert Http
+You can call other **[http response methods](https://laravel.com/docs/5.8/http-tests#available-assertions)** also:
 
-->novaRelation('workflows')
+```php
+$this->novaIndex('users')
+    ->assertOk();
+    ->assertUnauthorized();
+    ->assertStatus(200);
+    ->assertSessionHas()
+    ->assertJson([
+        //
+    ]);
+```
 
-->novaRelation('workflows', $id, 'users')
-
-### Assert Fields
+# Assert Fields
 
 Assert columns or form fields with the following:
 
@@ -74,7 +82,7 @@ todo
 $response->assertFieldDoesntEquals();
 ```
 
-## Assert Authorization
+# Assert Authorization
 
 The following assert against the auth user & **[Nova's use of policies](https://nova.laravel.com/docs/2.0/resources/authorization.html#authorization)**
 
@@ -127,19 +135,4 @@ $response->assertCanView();
 Assert that the authenticated user can not view
 ```php
 $response->assertCannotView();
-```
-
-
-### Assert Http
-You can call other **[http response methods](https://laravel.com/docs/5.8/http-tests#available-assertions)** also:
-
-```php
-$this->novaIndex('users')
-    ->assertOk();
-    ->assertUnauthorized();
-    ->assertStatus(200);
-    ->assertSessionHas()
-    ->assertJson([
-        //
-    ]);
 ```
