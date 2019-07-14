@@ -4,7 +4,7 @@ namespace NovaTesting;
 
 use NovaTesting\NovaResponse;
 
-trait NovaRequests
+trait NovaAssertions
 {
     public function novaIndex($resource)
     {

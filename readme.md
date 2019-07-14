@@ -8,11 +8,11 @@ Work in progress. Not functional yet.
 composer require dillingham/nova-assertions
 ```
 ```php
-use NovaTesting\NovaRequests;
+use NovaTesting\NovaAssertions;
 
 class UserTest extends TestCase
 {
-    use NovaRequests;
+    use NovaAssertions;
 
     public function testNova()
     {
