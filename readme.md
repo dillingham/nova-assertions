@@ -5,7 +5,7 @@ Work in progress. Not functional yet.
 ### Installation
 
 ```
-composer require dillingham/nova-test-requests
+composer require dillingham/nova-assertions
 ```
 ```php
 use NovaTesting\NovaRequests;
@@ -38,15 +38,15 @@ class UserTest extends TestCase
 
 ### Assert Authorization
 
-- ->assertCanDelete()
-- ->assertCannotDelete()
-- ->assertCanForceDelete()
-- ->assertCannotForceDelete()
-- ->assertCanRestore()
-- ->assertCannotRestore()
-- ->assertCanUpdate()
-- ->assertCannotUpdate()
-- ->assertCanView()
-- ->assertCannotView()
-- ->assertCanViewAny()
-- ->assertCannotViewAny()
+| Assertion | Description |
+| - | - |
+| ->assertCanDelete() | assert user can delete |
+| ->assertCannotDelete() | assert user can not delete |
+| ->assertCanForceDelete() | assert user can force delete |
+| ->assertCannotForceDelete() | assert user can not force delete |
+| ->assertCanRestore() | assert user can restore |
+| ->assertCannotRestore() | assert user can not restore |
+| ->assertCanUpdate() | assert user can update |
+| ->assertCannotUpdate() | assert user can not update |
+| ->assertCanView() | assert user can view |
+| ->assertCannotView() | assert user can not view |
