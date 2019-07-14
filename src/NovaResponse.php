@@ -27,4 +27,9 @@ class NovaResponse
 
         return $this;
     }
+
+    public function originalResponse()
+    {
+        return $this->originalJsonResponse;
+    }
 }

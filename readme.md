@@ -76,3 +76,12 @@ The following assert against the auth user & Nova's use of policies
 | ->assertCannotUpdate() | assert user can not update |
 | ->assertCanView() | assert user can view |
 | ->assertCannotView() | assert user can not view |
+
+You can call other json response methods too:
+
+```php
+$this->novaIndex('users')
+    ->assertOk();
+    ->assertUnauthorized();
+    ->assertJson([]);
+```
