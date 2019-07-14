@@ -19,4 +19,18 @@ trait NovaRequests
             $this->getJson("nova-api/$resource/$id")
         );
     }
+
+    public function novaCreate($resource)
+    {
+        return new NovaResponse(
+            $this->getJson("nova-api/$resource/creation-fields")
+        );
+    }
+
+    public function novaEdit($resource, $id)
+    {
+        return new NovaResponse(
+            $this->getJson("nova-api/$resource/$id/update-fields")
+        );
+    }
 }

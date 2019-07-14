@@ -60,20 +60,8 @@ trait Authorization
     {
         $action = 'authorizedTo' . ucwords($action);
 
-        if (isset($this->original['resource'])) {
-            return $this->assertJson([
-                'resource' => [ $action => $boolean ]
-            ]);
-        }
-
-        if (isset($this->original['resources']) && count($this->original['resources'])) {
-            return $this->assertJson([
-                'resources' => [
-                    0 => [ $action => $boolean ]
-                ]
-            ]);
-        }
-
-        abort(500, 'No results');
+        return $this->assertJsonFragment([
+            $action => $boolean
+        ]);
     }
 }

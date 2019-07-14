@@ -6,11 +6,16 @@ trait Fields
 {
     public function assertFieldExists($attribute)
     {
-        // $this->response->assertJsonFragment(['resource' => ]);
+        return $this->assertJsonFragment([ 'fields' => [
+            'attribute' => $attribute
+        ]]);
     }
 
     public function assertFieldEquals($attribute, $value)
     {
-        // $this->response->assertJson();
+        return $this->assertJsonFragment([
+            'attribute' => $attribute,
+            'value' => $value,
+        ]);
     }
 }

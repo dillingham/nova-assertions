@@ -39,6 +39,10 @@ $this->be(factory(User::class)->create());
 - ->novaCreate($resource)
 - ->novaEdit($resource, $id)
 
+<!-- TODO: -->
+->novaBelongsTo('workflows', $id, 'users')
+    ->assertRelation($user->id, 'Brian')
+
 ### Assert Fields
 
 - ->assertFieldExists($attribute)
