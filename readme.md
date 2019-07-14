@@ -60,14 +60,14 @@ $response->assertFieldsInclude('id');
 $response->assertFieldsInclude('id', $user->id);
 $response->assertFieldsInclude(['id', 'email']);
 $response->assertFieldsInclude(['id' => 1, 'email' => 'example']);
-$response->assertFieldsInclude($users->pluck('id));
+$response->assertFieldsInclude('id', $users->pluck('id));
 ```
 ```php
 $response->assertFieldsExclude('id');
 $response->assertFieldsExclude('id', $user->id);
 $response->assertFieldsExclude(['id', 'email']);
 $response->assertFieldsExclude(['id' => 1, 'email' => 'example']);
-$response->assertFieldsExclude($users->pluck('id));
+$response->assertFieldsExclude('id, $users->pluck('id));
 ```
 
 ### Assert Actions
