@@ -69,7 +69,7 @@ trait Fields
         ]);
     }
 
-    public function assertFieldManyValues($attribute, $value, $method)
+    public function assertFieldManyValues($attribute, array $value, $method)
     {
         foreach ($value as $v) {
             $this->assertFieldValue($attribute, $v, $method);
@@ -78,10 +78,10 @@ trait Fields
         return $this;
     }
 
-    public function assertFieldKeys($attribute, $method)
+    public function assertFieldKeys(array $keys, $method)
     {
-        foreach ($attribute as $attr) {
-            $this->assertFieldAttribute($attr, $method);
+        foreach ($keys as $key) {
+            $this->assertFieldAttribute($key, $method);
         }
 
         return $this;
