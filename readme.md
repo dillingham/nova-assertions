@@ -83,6 +83,9 @@ $response->assertCannotRestore();
 
 ### Assert Cards
 ```php
+$response->assertCardCount(5);
+```
+```php
 $response->assertCardsInclude(Card::class);
 ```
 ```php
@@ -91,13 +94,18 @@ $response->assertCardsExclude(Card::class);
 
 ### Assert Actions
 ```php
+$response->assertActionCount(5);
+```
+```php
 $response->assertActionsInclude(Action::class);
 ```
 ```php
 $response->assertActionsExclude(Action::class);
 ```
 ### Assert Filters
-
+```php
+$response->assertFilterCount(5);
+```
 ```php
 $response->assertFiltersInclude(Filter::class);
 ```
@@ -110,7 +118,9 @@ $response->assertFiltersExclude(Filter::class);
 $response->assertResourceCount(3);
 ```
 ### Assert Fields
-
+```php
+$response->assertFieldCount(5);
+```
 Assert a specific field exists
 ```php
 $response->assertFieldsInclude('id');
