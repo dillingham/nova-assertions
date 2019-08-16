@@ -49,15 +49,6 @@ TODO:: Add filtering & query params
     Filter::class => 'value'
 ]);
 
-TODO: Add other requests to index & detail
-
-Index requests filters & cards etc
-
-So should ->novaIndex. Store as $cardResponse for assertions
-
-- $nova->actions->assertFieldsInclude('id);
-- $nova->cards->assertFieldsInclude('id);
-- $nova->lenses->assertOk();
 
 ### Assert Http
 You can call **[http response methods](https://laravel.com/docs/5.8/http-tests#available-assertions)** as usual:
@@ -101,11 +92,14 @@ $response->assertFieldsExclude('id, $users->pluck('id));
 
 ### Assert Actions
 
-Coming soon
+```php
+$response->assertActionsInclude('card-uri-key');
+```
 
 ### Assert  Cards
-
-Coming soon
+```php
+$response->assertCardsInclude('card-uri-key');
+```
 
 ### Assert Authorization
 

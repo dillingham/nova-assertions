@@ -8,13 +8,17 @@ trait AssertActions
 {
     public $novaActionResponse;
 
-    public function assertActionsInclude()
+    public function assertActionsInclude($uriKey)
     {
         if (is_null($this->novaActionResponse)) {
             $this->setNovaActionResponse();
         }
 
-        // perform response check
+        $this->novaActionResponse->assertJsonFragment([
+            'uriKey' => $uriKey
+        ]);
+
+        return $this;
     }
 
     public function assertActionsExclude()
@@ -23,15 +27,27 @@ trait AssertActions
             $this->setNovaActionResponse();
         }
 
-        // perform response check
+        $this->novaActionResponse->assertJsonMissing([
+            'uriKey' => $uriKey
+        ]);
+
+        return $this;
     }
 
     public function setNovaActionResponse()
     {
         extract($this->novaParameters);
 
+        $endpoint = "nova-api/$resource/actions";
+
+        if (isset($resourceId)) {
+            $endpoint = "$endpoint?resourceId=$resourceId";
+        }
+
         $this->novaActionResponse = new NovaResponse(
-            $this->getJson("$resource/actions?resourceId=$resourceId")
+            $this->parent->getJson($endpoint),
+            $this->novaParameters,
+            $this->parent
         );
     }
 }
