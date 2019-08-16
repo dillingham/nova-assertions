@@ -16,9 +16,13 @@ class NovaResponse
 
     protected $originalJsonResponse;
 
-    public function __construct($originalJsonResponse)
+    protected $novaParameters;
+
+    public function __construct($originalJsonResponse, $parameters)
     {
         $this->originalJsonResponse = $originalJsonResponse;
+
+        $this->novaParameters = $parameters;
     }
 
     public function __get($property)

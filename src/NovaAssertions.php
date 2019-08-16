@@ -8,37 +8,29 @@ trait NovaAssertions
 {
     public function novaIndex($resource)
     {
-        $this->novaParameters = compact('resource');
+        $json = $this->getJson("nova-api/$resource");
 
-        return new NovaResponse(
-            $this->getJson("nova-api/$resource")
-        );
+        return new NovaResponse($json, compact('resource'));
     }
 
     public function novaDetail($resource, $resourceId)
     {
-        $this->novaParameters = compact('resource', 'resourceId');
+        $json = $this->getJson("nova-api/$resource/$resourceId");
 
-        return new NovaResponse(
-            $this->getJson("nova-api/$resource/$resourceId")
-        );
+        return new NovaResponse($json, compact('resource', 'resourceId'));
     }
 
     public function novaCreate($resource)
     {
-        $this->novaParameters = compact('resource');
+        $json = $this->getJson("nova-api/$resource/creation-fields");
 
-        return new NovaResponse(
-            $this->getJson("nova-api/$resource/creation-fields")
-        );
+        return new NovaResponse($json, compact('resource'));
     }
 
     public function novaEdit($resource, $resourceId)
     {
-        $this->novaParameters = compact('resource', 'resourceId');
+        $json = $this->getJson("nova-api/$resource/$resourceId/update-fields");
 
-        return new NovaResponse(
-            $this->getJson("nova-api/$resource/$resourceId/update-fields")
-        );
+        return new NovaResponse($json, compact('resource', 'resourceId'));
     }
 }
