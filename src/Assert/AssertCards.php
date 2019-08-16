@@ -8,15 +8,17 @@ trait AssertCards
 {
     public $novaCardResponse;
 
-    public function assertCardsInclude()
+    public function assertCardsInclude($uriKey)
     {
         if (is_null($this->novaCardResponse)) {
             $this->setNovaCardResponse();
         }
 
-        dd($this->novaCardResponse);
+        $this->novaCardResponse->assertJsonFragment([
+            'uriKey' => $uriKey
+        ]);
 
-        // perform response check
+        return $this;
     }
 
     public function assertCardsExclude()
@@ -25,16 +27,27 @@ trait AssertCards
             $this->setNovaCardResponse();
         }
 
-        dd($this->novaCardResponse);
-        // perform response check
+        $this->novaCardResponse->assertJsonMissing([
+            'uriKey' => $uriKey
+        ]);
+
+        return $this;
     }
 
     public function setNovaCardResponse()
     {
         extract($this->novaParameters);
 
+        $endpoint = "nova-api/$resource/cards";
+
+        if (isset($resourceId)) {
+            $endpoint = "$endpoint?resourceId=$resourceId";
+        }
+
         $this->novaCardResponse = new NovaResponse(
-            $this->getJson("$resource/cards?resourceId=$resourceId")
+            $this->parent->getJson($endpoint),
+            $this->novaParameters,
+            $this->parent
         );
     }
 }
