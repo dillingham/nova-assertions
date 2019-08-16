@@ -38,16 +38,16 @@ $this->be(factory(User::class)->create());
 Request Nova's results with one of the following:
 
 ```php
-$response = $this->novaIndex($resource);
+$response = $this->novaIndex('users');
 ```
 ```php
-$response = $this->novaDetail($resource, $id);
+$response = $this->novaDetail('users', $user->id);
 ```
 ```php
-$response = $this->novaCreate($resource);
+$response = $this->novaCreate('users');
 ```
 ```php
-$response = $this->novaEdit($resource, $id);
+$response = $this->novaEdit('users', $user->id);
 ```
 
 TODO:: Add filtering & query params
