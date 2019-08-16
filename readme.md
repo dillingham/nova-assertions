@@ -38,10 +38,16 @@ $this->be(factory(User::class)->create());
 Request Nova's results with one of the following:
 
 ```php
-$this->novaIndex($resource)
-$this->novaDetail($resource, $id)
-$this->novaCreate($resource)
-$this->novaEdit($resource, $id)
+$response = $this->novaIndex($resource);
+```
+```php
+$response = $this->novaDetail($resource, $id);
+```
+```php
+$response = $this->novaCreate($resource);
+```
+```php
+$response = $this->novaEdit($resource, $id);
 ```
 
 TODO:: Add filtering & query params
@@ -57,18 +63,7 @@ You can call **[http response methods](https://laravel.com/docs/5.8/http-tests#a
 $response->assertOk();
 ```
 
-### Assert Cards
-```php
-$response->assertCardsInclude('card-uri-key');
-$response->assertCardsExclude('card-uri-key');
-```
-
-### Assert Actions
-```php
-$response->assertActionsInclude('action-uri-key');
-$response->assertActionsExclude('action-uri-key');
-```
-### Assert Authorization
+### Assert Policies
 
 The following assert against the auth user & **[Nova's use of policies](https://nova.laravel.com/docs/2.0/resources/authorization.html#authorization)**
 
@@ -85,6 +80,18 @@ $response->assertCannotUpdate();
 $response->assertCannotDelete();
 $response->assertCannotForceDelete();
 $response->assertCannotRestore();
+```
+
+### Assert Cards
+```php
+$response->assertCardsInclude('card-uri-key');
+$response->assertCardsExclude('card-uri-key');
+```
+
+### Assert Actions
+```php
+$response->assertActionsInclude('action-uri-key');
+$response->assertActionsExclude('action-uri-key');
 ```
 
 ### Assert Fields
