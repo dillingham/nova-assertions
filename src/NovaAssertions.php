@@ -6,9 +6,11 @@ use NovaTesting\NovaResponse;
 
 trait NovaAssertions
 {
-    public function novaIndex($resource)
+    public function novaIndex($resource, $filters = [])
     {
-        $json = $this->getJson("nova-api/$resource");
+        $filters = $this->makeNovaFilters($resource, $filters);
+
+        $json = $this->getJson("nova-api/$resource?$filters");
 
         return new NovaResponse($json, compact('resource'), $this);
     }
@@ -32,5 +34,16 @@ trait NovaAssertions
         $json = $this->getJson("nova-api/$resource/$resourceId/update-fields");
 
         return new NovaResponse($json, compact('resource', 'resourceId'), $this);
+    }
+
+    public function makeNovaFilters($resource, $filters)
+    {
+        $encoded = base64_encode(json_encode(
+            collect($filters)->map(function ($value, $key) {
+                return ['class' => $key, 'value' => $value];
+            })->values()
+        ));
+
+        return "{$resource}_filter=$encoded";
     }
 }
