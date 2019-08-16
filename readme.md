@@ -33,7 +33,7 @@ Log in a user that **[has access to Nova](https://nova.laravel.com/docs/2.0/inst
 $this->be(factory(User::class)->create());
 ```
 
-### Requests
+### Nova Requests
 
 Request Nova's results with one of the following:
 
@@ -93,7 +93,10 @@ $response->assertCardsExclude('card-uri-key');
 $response->assertActionsInclude('action-uri-key');
 $response->assertActionsExclude('action-uri-key');
 ```
-
+### Assert Resource Count
+```php
+$response->assertResourceCount(3);
+```
 ### Assert Fields
 
 Assert columns or form fields with the following:

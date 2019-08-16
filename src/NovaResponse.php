@@ -6,10 +6,12 @@ use NovaTesting\Assert\AssertCards;
 use NovaTesting\Assert\AssertFields;
 use NovaTesting\Assert\AssertActions;
 use NovaTesting\Assert\AssertPolicies;
+use NovaTesting\Assert\AssertResources;
 
 class NovaResponse
 {
-    use AssertPolicies,
+    use AssertResources,
+        AssertPolicies,
         AssertActions,
         AssertFields,
         AssertCards;
