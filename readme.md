@@ -55,7 +55,6 @@ TODO:: Add filtering & query params
     Filter::class => 'value'
 ]);
 
-
 ### Assert Http
 You can call **[http response methods](https://laravel.com/docs/5.8/http-tests#available-assertions)** as usual:
 
@@ -101,27 +100,27 @@ $response->assertResourceCount(3);
 
 Assert columns or form fields with the following:
 
-a specific field exists
+Assert a specific field exists
 ```php
 $response->assertFieldsInclude('id');
 ```
-a specific field contains a value
+Assert a specific field contains a value
 ```php
 $response->assertFieldsInclude('id', $user->id);
 ```
-multiple fields exist
+Assert multiple fields exist
 ```php
 $response->assertFieldsInclude(['id', 'email']);
 ```
-multiple fields and their values
+Assert multiple fields with specific values exist
 ```php
 $response->assertFieldsInclude(['id' => 1, 'email' => 'example']);
 ```
-multiple values for one field / index column
+Assert multiple values for one field exist
 ```php
 $response->assertFieldsInclude('id', $users->pluck('id));
 ```
-You can also do the inverse with exclude
+Assert fields don't exist
 ```php
 $response->assertFieldsExclude('id');
 $response->assertFieldsExclude('id', $user->id);
