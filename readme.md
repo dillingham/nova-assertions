@@ -57,6 +57,36 @@ You can call **[http response methods](https://laravel.com/docs/5.8/http-tests#a
 $response->assertOk();
 ```
 
+### Assert Cards
+```php
+$response->assertCardsInclude('card-uri-key');
+$response->assertCardsExclude('card-uri-key');
+```
+
+### Assert Actions
+```php
+$response->assertActionsInclude('action-uri-key');
+$response->assertActionsExclude('action-uri-key');
+```
+### Assert Authorization
+
+The following assert against the auth user & **[Nova's use of policies](https://nova.laravel.com/docs/2.0/resources/authorization.html#authorization)**
+
+```php
+$response->assertCanView();
+$response->assertCanUpdate();
+$response->assertCanDelete();
+$response->assertCanForceDelete();
+$response->assertCanRestore();
+```
+```php
+$response->assertCannotView();
+$response->assertCannotUpdate();
+$response->assertCannotDelete();
+$response->assertCannotForceDelete();
+$response->assertCannotRestore();
+```
+
 ### Assert Fields
 
 Assert columns or form fields with the following:
@@ -88,34 +118,4 @@ $response->assertFieldsExclude('id', $user->id);
 $response->assertFieldsExclude(['id', 'email']);
 $response->assertFieldsExclude(['id' => 1, 'email' => 'example']);
 $response->assertFieldsExclude('id, $users->pluck('id));
-```
-
-### Assert Actions
-
-```php
-$response->assertActionsInclude('card-uri-key');
-```
-
-### Assert  Cards
-```php
-$response->assertCardsInclude('card-uri-key');
-```
-
-### Assert Authorization
-
-The following assert against the auth user & **[Nova's use of policies](https://nova.laravel.com/docs/2.0/resources/authorization.html#authorization)**
-
-```php
-$response->assertCanView();
-$response->assertCanUpdate();
-$response->assertCanDelete();
-$response->assertCanForceDelete();
-$response->assertCanRestore();
-```
-```php
-$response->assertCannotView();
-$response->assertCannotUpdate();
-$response->assertCannotDelete();
-$response->assertCannotForceDelete();
-$response->assertCannotRestore();
 ```
