@@ -8,27 +8,27 @@ trait AssertCards
 {
     public $novaCardResponse;
 
-    public function assertCardsInclude($uriKey)
+    public function assertCardsInclude($class)
     {
         if (is_null($this->novaCardResponse)) {
             $this->setNovaCardResponse();
         }
 
         $this->novaCardResponse->assertJsonFragment([
-            'uriKey' => $uriKey
+            'uriKey' => app($class)->uriKey()
         ]);
 
         return $this;
     }
 
-    public function assertCardsExclude($uriKey)
+    public function assertCardsExclude($class)
     {
         if (is_null($this->novaCardResponse)) {
             $this->setNovaCardResponse();
         }
 
         $this->novaCardResponse->assertJsonMissing([
-            'uriKey' => $uriKey
+            'uriKey' => app($class)->uriKey()
         ]);
 
         return $this;

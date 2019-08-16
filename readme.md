@@ -83,18 +83,18 @@ $response->assertCannotRestore();
 
 ### Assert Cards
 ```php
-$response->assertCardsInclude('card-uri-key');
+$response->assertCardsInclude(Card::class);
 ```
 ```php
-$response->assertCardsExclude('card-uri-key');
+$response->assertCardsExclude(Card::class);
 ```
 
 ### Assert Actions
 ```php
-$response->assertActionsInclude('action-uri-key');
+$response->assertActionsInclude(Action::class);
 ```
 ```php
-$response->assertActionsExclude('action-uri-key');
+$response->assertActionsExclude(Action::class);
 ```
 ### Assert Filters
 

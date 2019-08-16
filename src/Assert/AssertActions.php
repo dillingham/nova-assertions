@@ -8,27 +8,27 @@ trait AssertActions
 {
     public $novaActionResponse;
 
-    public function assertActionsInclude($uriKey)
+    public function assertActionsInclude($class)
     {
         if (is_null($this->novaActionResponse)) {
             $this->setNovaActionResponse();
         }
 
         $this->novaActionResponse->assertJsonFragment([
-            'uriKey' => $uriKey
+            'uriKey' => app($class)->uriKey()
         ]);
 
         return $this;
     }
 
-    public function assertActionsExclude($uriKey)
+    public function assertActionsExclude($class)
     {
         if (is_null($this->novaActionResponse)) {
             $this->setNovaActionResponse();
         }
 
         $this->novaActionResponse->assertJsonMissing([
-            'uriKey' => $uriKey
+            'uriKey' => app($class)->uriKey()
         ]);
 
         return $this;
