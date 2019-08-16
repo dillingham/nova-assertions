@@ -84,12 +84,16 @@ $response->assertCannotRestore();
 ### Assert Cards
 ```php
 $response->assertCardsInclude('card-uri-key');
+```
+```php
 $response->assertCardsExclude('card-uri-key');
 ```
 
 ### Assert Actions
 ```php
 $response->assertActionsInclude('action-uri-key');
+```
+```php
 $response->assertActionsExclude('action-uri-key');
 ```
 ### Assert Resource Count
