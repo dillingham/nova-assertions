@@ -9,6 +9,13 @@ trait AssertFields
     // ['id' => 1, 'email' => 'emai']
     // ^ should be on one row; not multiple assertions
 
+    public function assertFieldCount($amount)
+    {
+        $this->assertJsonCount($amount, 'fields');
+
+        return $this;
+    }
+
     public function assertFieldsInclude($attribute, $value=null)
     {
         return $this->fieldCheck($attribute, $value, 'assertJsonFragment');

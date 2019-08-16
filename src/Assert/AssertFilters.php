@@ -8,6 +8,13 @@ trait AssertFilters
 {
     public $novaFilterResponse;
 
+    public function assertFilterCount($amount)
+    {
+        $this->assertJsonCount($amount, 'filters');
+
+        return $this;
+    }
+
     public function assertFiltersInclude($class)
     {
         if (is_null($this->novaFilterResponse)) {

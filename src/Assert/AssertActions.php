@@ -8,6 +8,13 @@ trait AssertActions
 {
     public $novaActionResponse;
 
+    public function assertActionCount($amount)
+    {
+        $this->assertJsonCount($amount, 'actions');
+
+        return $this;
+    }
+
     public function assertActionsInclude($class)
     {
         if (is_null($this->novaActionResponse)) {

@@ -6,8 +6,6 @@ use NovaTesting\NovaResponse;
 
 trait AssertResources
 {
-    public $novaCardResponse;
-
     public function assertResourceCount($amount)
     {
         $this->assertJsonCount($amount, 'resources');

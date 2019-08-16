@@ -8,6 +8,13 @@ trait AssertCards
 {
     public $novaCardResponse;
 
+    public function assertCardCount($amount)
+    {
+        $this->assertJsonCount($amount, 'cards');
+
+        return $this;
+    }
+
     public function assertCardsInclude($class)
     {
         if (is_null($this->novaCardResponse)) {
