@@ -41,6 +41,11 @@ Request Nova's results with one of the following:
 $response = $this->novaIndex('users');
 ```
 ```php
+$response = $this->novaIndex('users', [
+    StatusFilter::class => 'active'
+]);
+```
+```php
 $response = $this->novaDetail('users', $user->id);
 ```
 ```php
@@ -49,11 +54,6 @@ $response = $this->novaCreate('users');
 ```php
 $response = $this->novaEdit('users', $user->id);
 ```
-
-TODO:: Add filtering & query params
-->novaIndex('posts', [
-    Filter::class => 'value'
-]);
 
 ### Assert Http
 You can call **[http response methods](https://laravel.com/docs/5.8/http-tests#available-assertions)** as usual:
@@ -98,7 +98,6 @@ $response->assertActionsExclude('action-uri-key');
 ```
 ### Assert Filters
 
-Coming soon
 ```php
 $response->assertFiltersInclude(Filter::class);
 ```

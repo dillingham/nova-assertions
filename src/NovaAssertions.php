@@ -8,7 +8,7 @@ trait NovaAssertions
 {
     public function novaIndex($resource, $filters = [])
     {
-        $filters = $this->makeNovaFilters($resource, $filters);
+        $filters = empty($filters) ? '' : $this->makeNovaFilters($resource, $filters);
 
         $json = $this->getJson("nova-api/$resource?$filters");
 
@@ -44,6 +44,6 @@ trait NovaAssertions
             })->values()
         ));
 
-        return "{$resource}_filter=$encoded";
+        return "filters=$encoded";
     }
 }
