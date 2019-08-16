@@ -4,8 +4,11 @@ namespace NovaTesting\Assert;
 
 use Illuminate\Support\Collection;
 
-trait Fields
+trait AssertFields
 {
+    // ['id' => 1, 'email' => 'emai']
+    // ^ should be on one row; not multiple assertions
+
     public function assertFieldsInclude($attribute, $value=null)
     {
         return $this->fieldCheck($attribute, $value, 'assertJsonFragment');

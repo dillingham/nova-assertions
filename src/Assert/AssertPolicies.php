@@ -4,7 +4,7 @@ namespace NovaTesting\Assert;
 
 use Illuminate\Support\Arr;
 
-trait Authorization
+trait AssertPolicies
 {
     public function assertCanDelete()
     {
