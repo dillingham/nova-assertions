@@ -96,13 +96,21 @@ $response->assertActionsInclude('action-uri-key');
 ```php
 $response->assertActionsExclude('action-uri-key');
 ```
+### Assert Filters
+
+Coming soon
+```php
+$response->assertFiltersInclude(Filter::class);
+```
+```php
+$response->assertFiltersExclude(Filter::class);
+```
+
 ### Assert Resource Count
 ```php
 $response->assertResourceCount(3);
 ```
 ### Assert Fields
-
-Assert columns or form fields with the following:
 
 Assert a specific field exists
 ```php

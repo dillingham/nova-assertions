@@ -21,7 +21,7 @@ trait AssertActions
         return $this;
     }
 
-    public function assertActionsExclude()
+    public function assertActionsExclude($uriKey)
     {
         if (is_null($this->novaActionResponse)) {
             $this->setNovaActionResponse();

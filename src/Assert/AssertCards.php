@@ -21,7 +21,7 @@ trait AssertCards
         return $this;
     }
 
-    public function assertCardsExclude()
+    public function assertCardsExclude($uriKey)
     {
         if (is_null($this->novaCardResponse)) {
             $this->setNovaCardResponse();

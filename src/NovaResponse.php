@@ -5,6 +5,7 @@ namespace NovaTesting;
 use NovaTesting\Assert\AssertCards;
 use NovaTesting\Assert\AssertFields;
 use NovaTesting\Assert\AssertActions;
+use NovaTesting\Assert\AssertFilters;
 use NovaTesting\Assert\AssertPolicies;
 use NovaTesting\Assert\AssertResources;
 
@@ -12,6 +13,7 @@ class NovaResponse
 {
     use AssertResources,
         AssertPolicies,
+        AssertFilters,
         AssertActions,
         AssertFields,
         AssertCards;
