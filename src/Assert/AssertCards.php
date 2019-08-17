@@ -47,7 +47,7 @@ trait AssertCards
 
         extract($this->novaParameters);
 
-        $endpoint = "nova-api/$resource/cards";
+        $endpoint = "$endpoint/cards";
 
         if (isset($resourceId)) {
             $endpoint = "$endpoint?resourceId=$resourceId";

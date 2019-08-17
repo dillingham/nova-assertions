@@ -10,44 +10,58 @@ trait NovaAssertions
 {
     public function novaIndex($resource, $filters = [])
     {
-        $resource = $this->resolveResourceUriKey($resource);
+        $resource = $this->resolveUriKey($resource);
+        $filters = $this->makeNovaFilters($resource, $filters);
+        $endpoint = "nova-api/$resource";
+        $json = $this->getJson("$endpoint?$filters");
 
-        $filters = empty($filters) ? '' : $this->makeNovaFilters($resource, $filters);
-
-        $json = $this->getJson("nova-api/$resource?$filters");
-
-        return new NovaResponse($json, compact('resource'), $this);
+        return new NovaResponse($json, compact('endpoint', 'resource'), $this);
     }
 
     public function novaDetail($resource, $resourceId)
     {
-        $resource = $this->resolveResourceUriKey($resource);
+        $resource = $this->resolveUriKey($resource);
+        $endpoint = "nova-api/$resource/$resourceId";
+        $json = $this->getJson($endpoint);
 
-        $json = $this->getJson("nova-api/$resource/$resourceId");
-
-        return new NovaResponse($json, compact('resource', 'resourceId'), $this);
+        return new NovaResponse($json, compact('endpoint', 'resource', 'resourceId'), $this);
     }
 
     public function novaCreate($resource)
     {
-        $resource = $this->resolveResourceUriKey($resource);
+        $resource = $this->resolveUriKey($resource);
+        $endpoint = "nova-api/$resource/creation-fields";
+        $json = $this->getJson($endpoint);
 
-        $json = $this->getJson("nova-api/$resource/creation-fields");
-
-        return new NovaResponse($json, compact('resource'), $this);
+        return new NovaResponse($json, compact('endpoint', 'resource'), $this);
     }
 
     public function novaEdit($resource, $resourceId)
     {
-        $resource = $this->resolveResourceUriKey($resource);
+        $resource = $this->resolveUriKey($resource);
+        $endpoint = "nova-api/$resource/$resourceId/update-fields";
+        $json = $this->getJson($endpoint);
 
-        $json = $this->getJson("nova-api/$resource/$resourceId/update-fields");
+        return new NovaResponse($json, compact('endpoint', 'resource', 'resourceId'), $this);
+    }
 
-        return new NovaResponse($json, compact('resource', 'resourceId'), $this);
+    public function novaLens($resource, $lens, $filters = [])
+    {
+        $resource = $this->resolveUriKey($resource);
+        $lens = $this->resolveUriKey($lens);
+        $filters = $this->makeNovaFilters($resource, $filters);
+        $endpoint = "nova-api/$resource/lens/$lens";
+        $json = $this->getJson("$endpoint?$filters");
+
+        return new NovaResponse($json, compact('endpoint', 'resource', 'lens'), $this);
     }
 
     public function makeNovaFilters($resource, $filters)
     {
+        if (empty($filters)) {
+            return '';
+        }
+
         $encoded = base64_encode(json_encode(
             collect($filters)->map(function ($value, $key) {
                 return ['class' => $key, 'value' => $value];
@@ -57,14 +71,14 @@ trait NovaAssertions
         return "filters=$encoded";
     }
 
-    public function resolveResourceUriKey($resource)
+    public function resolveUriKey($class)
     {
-        if (Str::contains('/', $resource)) {
-            abort_if(is_subclass_of(Model::class, $resource), 500, 'You used a Eloquent model vs a Nova resource');
+        if (Str::contains(DIRECTORY_SEPARATOR, $class)) {
+            abort_if(is_subclass_of(Model::class, $class), 500, 'You used a Eloquent model vs a Nova resource');
 
-            return app($resource)->uriKey();
+            return app($class)->uriKey();
         }
 
-        return $resource;
+        return $class;
     }
 }

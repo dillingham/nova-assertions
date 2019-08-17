@@ -48,7 +48,7 @@ trait AssertFilters
         extract($this->novaParameters);
 
         $this->novaFilterResponse = new NovaResponse(
-            $this->parent->getJson("nova-api/$resource/filters"),
+            $this->parent->getJson("$endpoint/filters"),
             $this->novaParameters,
             $this->parent
         );

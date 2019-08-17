@@ -48,7 +48,7 @@ trait AssertLenses
         extract($this->novaParameters);
 
         $this->novaLensResponse = new NovaResponse(
-            $this->parent->getJson("nova-api/$resource/lenses"),
+            $this->parent->getJson("$endpoint/lenses"),
             $this->novaParameters,
             $this->parent
         );

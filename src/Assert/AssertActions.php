@@ -47,7 +47,7 @@ trait AssertActions
 
         extract($this->novaParameters);
 
-        $endpoint = "nova-api/$resource/actions";
+        $endpoint = "$endpoint/actions";
 
         if (isset($resourceId)) {
             $endpoint = "$endpoint?resourceId=$resourceId";
