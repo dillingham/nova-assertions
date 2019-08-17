@@ -27,6 +27,8 @@ trait AssertActions
         $actions = collect(json_decode(json_encode(Arr::get($original, 'actions', []), true)));
 
         PHPUnit::assertTrue($callable($actions));
+
+        return $this;
     }
 
     public function assertActionsInclude($class)
