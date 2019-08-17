@@ -30,16 +30,15 @@ class UserTest extends TestCase
 
 ### Usage Example
 ```php
-    public function testNova()
-    {
-        $this->be(factory(User::class)->create());
+public function testNova()
+{
+    $this->be(factory(User::class)->create());
 
-        $this->novaIndex('users')
-            ->assertCanUpdate()
-            ->assertCannotDelete()
-            ->assertFieldsInclude('email')
-            ->assertFieldsExclude('password');
-    }
+    $this->novaIndex('users')
+        ->assertCanUpdate()
+        ->assertCannotDelete()
+        ->assertFieldsInclude('email')
+        ->assertFieldsExclude('password');
 }
 ```
 
@@ -56,12 +55,6 @@ Request Nova's results with one of the following:
 ```php
 $response = $this->novaIndex('users');
 ```
-You may also pass a filter & it's value to index
-```php
-$response = $this->novaIndex('users', [
-    StatusFilter::class => 'active'
-]);
-```
 ```php
 $response = $this->novaDetail('users', $user->id);
 ```
@@ -74,7 +67,14 @@ $response = $this->novaEdit('users', $user->id);
 ```php
 $response = $this->novaLens('users', Lens::class);
 ```
-You may also pass a filter & it's value to lenses
+
+### Request Filters
+You may also pass a filter & it's value to indexes & lenses
+```php
+$response = $this->novaIndex('users', [
+    StatusFilter::class => 'active'
+]);
+```
 ```php
 $response = $this->novaLens('users', [
     StatusFilter::class => 'active'
