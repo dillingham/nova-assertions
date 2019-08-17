@@ -25,6 +25,8 @@ trait AssertFilters
         $filters = collect(json_decode(json_encode($original, true)));
 
         PHPUnit::assertTrue($callable($filters));
+
+        return $this;
     }
 
     public function assertFiltersInclude($class)

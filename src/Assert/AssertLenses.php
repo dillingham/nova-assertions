@@ -26,6 +26,8 @@ trait AssertLenses
         $lenses = collect(json_decode(json_encode($original, true)));
 
         PHPUnit::assertTrue($callable($lenses));
+
+        return $this;
     }
 
     public function assertLensesInclude($class)

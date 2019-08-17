@@ -21,5 +21,7 @@ trait AssertResources
         $resources = collect(json_decode(json_encode(Arr::get($this->original, 'resources', []), true)));
 
         PHPUnit::assertTrue($callable($resources));
+
+        return $this;
     }
 }

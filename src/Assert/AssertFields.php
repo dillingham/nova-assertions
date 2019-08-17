@@ -24,6 +24,8 @@ trait AssertFields
         $actions = collect(json_decode(json_encode(data_get($this->original, $path, []), true)));
 
         PHPUnit::assertTrue($callable($actions));
+
+        return $this;
     }
 
     public function assertFieldsInclude($attribute, $value=null)

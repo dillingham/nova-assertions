@@ -26,6 +26,8 @@ trait AssertCards
         $cards = collect(json_decode(json_encode($original, true)));
 
         PHPUnit::assertTrue($callable($cards));
+
+        return $this;
     }
 
     public function assertCardsInclude($class)
