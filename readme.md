@@ -10,6 +10,7 @@ Quick links:
 [Cards](https://github.com/dillingham/nova-assertions#assert-cards) |
 [Actions](https://github.com/dillingham/nova-assertions#assert-actions) |
 [Filters](https://github.com/dillingham/nova-assertions#assert-filters) |
+[Lenses](https://github.com/dillingham/nova-assertions#assert-lenses) |
 [Resources](https://github.com/dillingham/nova-assertions#assert-resources) |
 [Fields](https://github.com/dillingham/nova-assertions#assert-fields)
 
@@ -24,7 +25,11 @@ use NovaTesting\NovaAssertions;
 class UserTest extends TestCase
 {
     use NovaAssertions;
+}
+```
 
+### Usage Example
+```php
     public function testNova()
     {
         $this->be(factory(User::class)->create());
@@ -123,7 +128,16 @@ $response->assertFiltersInclude(Filter::class);
 ```php
 $response->assertFiltersExclude(Filter::class);
 ```
-
+### Assert Lenses
+```php
+$response->assertLensCount(5);
+```
+```php
+$response->assertLensesInclude(Lens::class);
+```
+```php
+$response->assertLensesExclude(Lens::class);
+```
 ### Assert Resources
 ```php
 $response->assertResourceCount(3);
