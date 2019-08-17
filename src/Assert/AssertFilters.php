@@ -4,6 +4,7 @@ namespace NovaTesting\Assert;
 
 use closure;
 use NovaTesting\NovaResponse;
+use Illuminate\Foundation\Testing\Assert as PHPUnit;
 
 trait AssertFilters
 {
