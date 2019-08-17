@@ -77,7 +77,7 @@ $response = $this->novaIndex('users', [
 ]);
 ```
 ```php
-$response = $this->novaLens('users', [
+$response = $this->novaLens('users', Lens::class, [
     StatusFilter::class => 'active'
 ]);
 ```
