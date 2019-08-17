@@ -4,6 +4,7 @@ namespace NovaTesting\Assert;
 
 use closure;
 use Illuminate\Support\Collection;
+use Illuminate\Foundation\Testing\Assert as PHPUnit;
 
 trait AssertFields
 {
@@ -20,7 +21,7 @@ trait AssertFields
     {
         $path = isset($this->original['resources']) ? 'resources.*.fields' : 'resource.fields';
 
-        $actions = collect(json_decode(json_encode(Arr::get($this->original, $path, []), true)));
+        $actions = collect(json_decode(json_encode(data_get($this->original, $path, []), true)));
 
         PHPUnit::assertTrue($callable($actions));
     }
