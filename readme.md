@@ -110,8 +110,6 @@ $response->assertCanForceDelete();
 ```php
 $response->assertCanRestore();
 ```
-```php
-```
 Also able to assert `cannot` for each:
 ```php
 $response->assertCannotView();
