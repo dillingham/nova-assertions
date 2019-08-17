@@ -2,7 +2,9 @@
 
 namespace NovaTesting\Assert;
 
+use closure;
 use NovaTesting\NovaResponse;
+use Illuminate\Foundation\Testing\Assert as PHPUnit;
 
 trait AssertActions
 {
@@ -15,6 +17,15 @@ trait AssertActions
         $this->novaActionResponse->assertJsonCount($amount, 'actions');
 
         return $this;
+    }
+
+    public function assertActions(closure $callable)
+    {
+        $original = $this->novaActionResponse->original;
+
+        $actions = collect(json_decode(json_encode(Arr::get($original, 'actions', []), true)));
+
+        PHPUnit::assertTrue($callable($actions));
     }
 
     public function assertActionsInclude($class)

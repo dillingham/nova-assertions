@@ -117,6 +117,11 @@ $response->assertCardsInclude(Card::class);
 ```php
 $response->assertCardsExclude(Card::class);
 ```
+```php
+$response->assertCards(function($cards) {
+    return $cards->count() > 0;
+});
+```
 
 ### Assert Actions
 ```php
@@ -128,6 +133,11 @@ $response->assertActionsInclude(Action::class);
 ```php
 $response->assertActionsExclude(Action::class);
 ```
+```php
+$response->assertActions(function($actions) {
+    return $actions->count() > 0;
+});
+```
 ### Assert Filters
 ```php
 $response->assertFilterCount(5);
@@ -137,6 +147,11 @@ $response->assertFiltersInclude(Filter::class);
 ```
 ```php
 $response->assertFiltersExclude(Filter::class);
+```
+```php
+$response->assertFilters(function($filters) {
+    return $filters->count() > 0;
+});
 ```
 ### Assert Lenses
 ```php
@@ -148,9 +163,19 @@ $response->assertLensesInclude(Lens::class);
 ```php
 $response->assertLensesExclude(Lens::class);
 ```
+```php
+$response->assertLenses(function($lenses) {
+    return $lenses->count() > 0;
+});
+```
 ### Assert Resources
 ```php
 $response->assertResourceCount(3);
+```
+```php
+$response->assertResources(function($resources) {
+    return $resources->count() > 0;
+});
 ```
 ### Assert Fields
 ```php
@@ -159,28 +184,36 @@ $response->assertFieldCount(5);
 Assert a specific field exists
 ```php
 $response->assertFieldsInclude('id');
+
+$response->assertFieldsExclude('id');
 ```
 Assert a specific field contains a value
 ```php
 $response->assertFieldsInclude('id', $user->id);
+
+$response->assertFieldsExclude('id', $user->id);
 ```
 Assert multiple fields exist
 ```php
 $response->assertFieldsInclude(['id', 'email']);
+
+$response->assertFieldsExclude(['id', 'email']);
 ```
 Assert multiple fields with specific values exist
 ```php
 $response->assertFieldsInclude(['id' => 1, 'email' => 'example']);
+
+$response->assertFieldsExclude(['id' => 1, 'email' => 'example']);
 ```
 Assert multiple values for one field exist
 ```php
-$response->assertFieldsInclude('id', $users->pluck('id));
+$response->assertFieldsInclude('id', $users->pluck('id'));
+
+$response->assertFieldsExclude('id', $users->pluck('id'));
 ```
-Assert fields don't exist
+Make assertions against a collection of fields
 ```php
-$response->assertFieldsExclude('id');
-$response->assertFieldsExclude('id', $user->id);
-$response->assertFieldsExclude(['id', 'email']);
-$response->assertFieldsExclude(['id' => 1, 'email' => 'example']);
-$response->assertFieldsExclude('id, $users->pluck('id));
+$response->assertFields(function($fields) {
+    return $fields->count() > 0;
+});
 ```

@@ -2,6 +2,7 @@
 
 namespace NovaTesting\Assert;
 
+use closure;
 use NovaTesting\NovaResponse;
 
 trait AssertCards
@@ -15,6 +16,15 @@ trait AssertCards
         $this->novaCardResponse->assertJsonCount($amount);
 
         return $this;
+    }
+
+    public function assertCards(closure $callable)
+    {
+        $original = $this->novaCardResponse->original;
+
+        $cards = collect(json_decode(json_encode($original, true)));
+
+        PHPUnit::assertTrue($callable($cards));
     }
 
     public function assertCardsInclude($class)

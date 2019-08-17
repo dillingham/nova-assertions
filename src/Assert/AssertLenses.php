@@ -17,6 +17,15 @@ trait AssertLenses
         return $this;
     }
 
+    public function assertLenses(closure $callable)
+    {
+        $original = $this->novaFilterResponse->original;
+
+        $lenses = collect(json_decode(json_encode($original, true)));
+
+        PHPUnit::assertTrue($callable($lenses));
+    }
+
     public function assertLensesInclude($class)
     {
         $this->setNovaLensResponse();

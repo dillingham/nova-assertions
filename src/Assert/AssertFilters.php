@@ -2,6 +2,7 @@
 
 namespace NovaTesting\Assert;
 
+use closure;
 use NovaTesting\NovaResponse;
 
 trait AssertFilters
@@ -15,6 +16,15 @@ trait AssertFilters
         $this->novaFilterResponse->assertJsonCount($amount);
 
         return $this;
+    }
+
+    public function assertFilters(closure $callable)
+    {
+        $original = $this->novaFilterResponse->original;
+
+        $filters = collect(json_decode(json_encode($original, true)));
+
+        PHPUnit::assertTrue($callable($filters));
     }
 
     public function assertFiltersInclude($class)

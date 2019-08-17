@@ -2,6 +2,7 @@
 
 namespace NovaTesting\Assert;
 
+use closure;
 use Illuminate\Support\Collection;
 
 trait AssertFields
@@ -13,6 +14,15 @@ trait AssertFields
         $this->assertJsonCount($amount, $path);
 
         return $this;
+    }
+
+    public function assertFields(closure $callable)
+    {
+        $path = isset($this->original['resources']) ? 'resources.*.fields' : 'resource.fields';
+
+        $actions = collect(json_decode(json_encode(Arr::get($this->original, $path, []), true)));
+
+        PHPUnit::assertTrue($callable($actions));
     }
 
     public function assertFieldsInclude($attribute, $value=null)
