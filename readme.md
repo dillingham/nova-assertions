@@ -1,6 +1,9 @@
-# Nova Assertions
+# ✅ Nova Assertions
 
-Perform Nova requests & assert fields & authorization
+[![Latest Version on Github](https://img.shields.io/github/release/dillingham/nova-assertions.svg?style=flat-square)](https://packagist.org/packages/dillingham/nova-assertions)
+[![Total Downloads](https://img.shields.io/packagist/dt/dillingham/nova-assertions.svg?style=flat-square)](https://packagist.org/packages/dillingham/nova-assertions)
+
+Nova requests & assertions for Laravel tests
 
 ### Installation
 
@@ -41,11 +44,6 @@ Request Nova's results with one of the following:
 $response = $this->novaIndex('users');
 ```
 ```php
-$response = $this->novaIndex('users', [
-    StatusFilter::class => 'active'
-]);
-```
-```php
 $response = $this->novaDetail('users', $user->id);
 ```
 ```php
@@ -54,7 +52,12 @@ $response = $this->novaCreate('users');
 ```php
 $response = $this->novaEdit('users', $user->id);
 ```
-
+You may also pass a filter & it's value to index
+```php
+$response = $this->novaIndex('users', [
+    StatusFilter::class => 'active'
+]);
+```
 ### Assert Http
 You can call **[http response methods](https://laravel.com/docs/5.8/http-tests#available-assertions)** as usual:
 
