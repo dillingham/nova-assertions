@@ -27,6 +27,7 @@ class UserTest extends TestCase
     use NovaAssertions;
 }
 ```
+Enable by adding the `NovaAssertions` to a test
 
 ### Usage Example
 ```php
