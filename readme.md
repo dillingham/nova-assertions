@@ -56,6 +56,12 @@ Request Nova's results with one of the following:
 ```php
 $response = $this->novaIndex('users');
 ```
+You may also pass a filter & it's value to index
+```php
+$response = $this->novaIndex('users', [
+    StatusFilter::class => 'active'
+]);
+```
 ```php
 $response = $this->novaDetail('users', $user->id);
 ```
@@ -65,9 +71,12 @@ $response = $this->novaCreate('users');
 ```php
 $response = $this->novaEdit('users', $user->id);
 ```
-You may also pass a filter & it's value to index
 ```php
-$response = $this->novaIndex('users', [
+$response = $this->novaLens('users', Lens::class);
+```
+You may also pass a filter & it's value to lenses
+```php
+$response = $this->novaLens('users', [
     StatusFilter::class => 'active'
 ]);
 ```
