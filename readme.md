@@ -70,7 +70,7 @@ $response = $this->novaLens('users', Lens::class);
 ```
 
 ### Request Filters
-You may also pass a filter & it's value to indexes & lenses
+You may also pass filters & their values to indexes & lenses
 ```php
 $response = $this->novaIndex('users', [
     StatusFilter::class => 'active'
@@ -110,7 +110,7 @@ $response->assertCanForceDelete();
 ```php
 $response->assertCanRestore();
 ```
-Also able to assert `cannot` for each:
+Also can assert `cannot` for each:
 ```php
 $response->assertCannotView();
 ```
