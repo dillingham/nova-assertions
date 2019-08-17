@@ -73,9 +73,7 @@ trait NovaAssertions
 
     public function resolveUriKey($class)
     {
-        if (Str::contains(DIRECTORY_SEPARATOR, $class)) {
-            abort_if(is_subclass_of(Model::class, $class), 500, 'You used a Eloquent model vs a Nova resource');
-
+        if (strpos($class, '\\')) {
             return app($class)->uriKey();
         }
 
