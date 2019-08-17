@@ -3,16 +3,15 @@
 [![Latest Version on Github](https://img.shields.io/github/release/dillingham/nova-assertions.svg?style=flat-square)](https://packagist.org/packages/dillingham/nova-assertions)
 [![Total Downloads](https://img.shields.io/packagist/dt/dillingham/nova-assertions.svg?style=flat-square)](https://packagist.org/packages/dillingham/nova-assertions)
 
-Nova requests & assertions for Laravel tests ✅
+Nova requests & assertions for Laravel tests
 
-[Requests](https://github.com/dillingham/nova-assertions#nova-requests) |
-Assert:
+Quick links:
 [Policies](https://github.com/dillingham/nova-assertions#assert-policies) |
 [Cards](https://github.com/dillingham/nova-assertions#assert-cards) |
 [Actions](https://github.com/dillingham/nova-assertions#assert-actions) |
-[Filters](https://github.com/dillingham/nova-assertions#assert-filters)
+[Filters](https://github.com/dillingham/nova-assertions#assert-filters) |
 [Resources](https://github.com/dillingham/nova-assertions#assert-resources) |
-[Fields](https://github.com/dillingham/nova-assertions#assert-fields) |
+[Fields](https://github.com/dillingham/nova-assertions#assert-fields)
 
 ### Installation
 
