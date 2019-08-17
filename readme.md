@@ -1,9 +1,9 @@
-# ✅ Nova Assertions
+# Nova Assertions
 
 [![Latest Version on Github](https://img.shields.io/github/release/dillingham/nova-assertions.svg?style=flat-square)](https://packagist.org/packages/dillingham/nova-assertions)
 [![Total Downloads](https://img.shields.io/packagist/dt/dillingham/nova-assertions.svg?style=flat-square)](https://packagist.org/packages/dillingham/nova-assertions)
 
-Nova requests & assertions for Laravel tests
+Nova requests & assertions for Laravel tests ✅
 
 ### Installation
 
