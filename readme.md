@@ -124,7 +124,7 @@ $response->assertFiltersInclude(Filter::class);
 $response->assertFiltersExclude(Filter::class);
 ```
 
-### Assert Resource Count
+### Assert Resources
 ```php
 $response->assertResourceCount(3);
 ```
