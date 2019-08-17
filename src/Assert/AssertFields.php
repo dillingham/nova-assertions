@@ -6,12 +6,11 @@ use Illuminate\Support\Collection;
 
 trait AssertFields
 {
-    // ['id' => 1, 'email' => 'emai']
-    // ^ should be on one row; not multiple assertions
-
     public function assertFieldCount($amount)
     {
-        $this->assertJsonCount($amount, 'fields');
+        $path = isset($this->original['resources']) ? 'resources.*.fields' : 'resource.fields';
+
+        $this->assertJsonCount($amount, $path);
 
         return $this;
     }

@@ -10,16 +10,16 @@ trait AssertFilters
 
     public function assertFilterCount($amount)
     {
-        $this->assertJsonCount($amount, 'filters');
+        $this->setNovaFilterResponse();
+
+        $this->novaFilterResponse->assertJsonCount($amount);
 
         return $this;
     }
 
     public function assertFiltersInclude($class)
     {
-        if (is_null($this->novaFilterResponse)) {
-            $this->setNovaFilterResponse();
-        }
+        $this->setNovaFilterResponse();
 
         $this->novaFilterResponse->assertJsonFragment([
             'class' => $class
@@ -30,9 +30,7 @@ trait AssertFilters
 
     public function assertFiltersExclude($class)
     {
-        if (is_null($this->novaFilterResponse)) {
-            $this->setNovaFilterResponse();
-        }
+        $this->setNovaFilterResponse();
 
         $this->novaFilterResponse->assertJsonMissing([
             'class' => $class
@@ -43,6 +41,10 @@ trait AssertFilters
 
     public function setNovaFilterResponse()
     {
+        if ($this->novaFilterResponse) {
+            return;
+        }
+
         extract($this->novaParameters);
 
         $this->novaFilterResponse = new NovaResponse(

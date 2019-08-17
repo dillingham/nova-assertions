@@ -10,16 +10,16 @@ trait AssertCards
 
     public function assertCardCount($amount)
     {
-        $this->assertJsonCount($amount, 'cards');
+        $this->setNovaCardResponse();
+
+        $this->novaCardResponse->assertJsonCount($amount);
 
         return $this;
     }
 
     public function assertCardsInclude($class)
     {
-        if (is_null($this->novaCardResponse)) {
-            $this->setNovaCardResponse();
-        }
+        $this->setNovaCardResponse();
 
         $this->novaCardResponse->assertJsonFragment([
             'uriKey' => app($class)->uriKey()
@@ -30,9 +30,7 @@ trait AssertCards
 
     public function assertCardsExclude($class)
     {
-        if (is_null($this->novaCardResponse)) {
-            $this->setNovaCardResponse();
-        }
+        $this->setNovaCardResponse();
 
         $this->novaCardResponse->assertJsonMissing([
             'uriKey' => app($class)->uriKey()
@@ -43,6 +41,10 @@ trait AssertCards
 
     public function setNovaCardResponse()
     {
+        if ($this->novaCardResponse) {
+            return;
+        }
+
         extract($this->novaParameters);
 
         $endpoint = "nova-api/$resource/cards";

@@ -10,16 +10,16 @@ trait AssertActions
 
     public function assertActionCount($amount)
     {
-        $this->assertJsonCount($amount, 'actions');
+        $this->setNovaActionResponse();
+
+        $this->novaActionResponse->assertJsonCount($amount, 'actions');
 
         return $this;
     }
 
     public function assertActionsInclude($class)
     {
-        if (is_null($this->novaActionResponse)) {
-            $this->setNovaActionResponse();
-        }
+        $this->setNovaActionResponse();
 
         $this->novaActionResponse->assertJsonFragment([
             'uriKey' => app($class)->uriKey()
@@ -30,9 +30,7 @@ trait AssertActions
 
     public function assertActionsExclude($class)
     {
-        if (is_null($this->novaActionResponse)) {
-            $this->setNovaActionResponse();
-        }
+        $this->setNovaActionResponse();
 
         $this->novaActionResponse->assertJsonMissing([
             'uriKey' => app($class)->uriKey()
@@ -43,6 +41,10 @@ trait AssertActions
 
     public function setNovaActionResponse()
     {
+        if ($this->novaActionResponse) {
+            return;
+        }
+
         extract($this->novaParameters);
 
         $endpoint = "nova-api/$resource/actions";
