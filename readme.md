@@ -94,6 +94,7 @@ The following assert against the auth user & **[Nova's use of policies](https://
 
 ```php
 $response->assertCanView();
+$response->assertCanCreate();
 $response->assertCanUpdate();
 $response->assertCanDelete();
 $response->assertCanForceDelete();
@@ -101,6 +102,7 @@ $response->assertCanRestore();
 ```
 ```php
 $response->assertCannotView();
+$response->assertCannotCreate();
 $response->assertCannotUpdate();
 $response->assertCannotDelete();
 $response->assertCannotForceDelete();

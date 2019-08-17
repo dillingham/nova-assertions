@@ -2,10 +2,30 @@
 
 namespace NovaTesting\Assert;
 
+use Laravel\Nova\Nova;
 use Illuminate\Support\Arr;
+use Illuminate\Foundation\Testing\Assert as PHPUnit;
 
 trait AssertPolicies
 {
+    public function assertCanCreate()
+    {
+        PHPUnit::assertTrue(
+            collect(Nova::jsonVariables(request())['resources'])
+                ->where('uriKey', $this->novaParameters['resource'])
+                ->first()['authorizedToCreate']
+        );
+    }
+
+    public function assertCannotCreate()
+    {
+        PHPUnit::assertFalse(
+            collect(Nova::jsonVariables(request())['resources'])
+                ->where('uriKey', $this->novaParameters['resource'])
+                ->first()['authorizedToCreate']
+        );
+    }
+
     public function assertCanDelete()
     {
         return $this->assertJsonFragment([
