@@ -94,19 +94,27 @@ The following assert against the auth user & **[Nova's use of policies](https://
 
 ```php
 $response->assertCanView();
+```
+```php
 $response->assertCanCreate();
+```
+```php
 $response->assertCanUpdate();
+```
+```php
 $response->assertCanDelete();
+```
+```php
 $response->assertCanForceDelete();
+```
+```php
 $response->assertCanRestore();
 ```
 ```php
+```
+Also able to assert `cannot` for each:
+```php
 $response->assertCannotView();
-$response->assertCannotCreate();
-$response->assertCannotUpdate();
-$response->assertCannotDelete();
-$response->assertCannotForceDelete();
-$response->assertCannotRestore();
 ```
 
 ### Assert Cards
