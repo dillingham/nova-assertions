@@ -21,7 +21,9 @@ trait AssertLenses
 
     public function assertLenses(closure $callable)
     {
-        $original = $this->novaFilterResponse->original;
+        $this->setNovaLensResponse();
+
+        $original = $this->novaLensResponse->original;
 
         $lenses = collect(json_decode(json_encode($original, true)));
 
