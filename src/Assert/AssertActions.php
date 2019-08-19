@@ -65,6 +65,7 @@ trait AssertActions
 
         if (isset($resourceId)) {
             $endpoint = "$endpoint?resourceId=$resourceId";
+            $endpoint = str_replace("/$resourceId", '', $endpoint);
         }
 
         $this->novaActionResponse = new NovaResponse(
