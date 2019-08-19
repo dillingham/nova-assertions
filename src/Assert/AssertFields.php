@@ -19,11 +19,17 @@ trait AssertFields
 
     public function assertFields(closure $callable)
     {
-        $path = isset($this->original['resources']) ? 'resources.*.fields' : 'resource.fields';
+        if (isset($this->original['resources'][0]['fields'])) {
+            $path = 'resources.*.fields';
+        } elseif (isset($this->original['resource']['fields'])) {
+            $path = 'resource.fields';
+        } elseif (isset($this->original['fields'])) {
+            $path = 'fields';
+        }
 
-        $actions = collect(json_decode(json_encode(data_get($this->original, $path, []), true)));
+        $fields = collect(json_decode(json_encode(data_get($this->original, $path, []), true)));
 
-        PHPUnit::assertTrue($callable($actions));
+        PHPUnit::assertTrue($callable($fields));
 
         return $this;
     }
