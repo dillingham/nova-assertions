@@ -60,6 +60,9 @@ trait AssertFilters
 
         extract($this->novaParameters);
 
+        abort_if(strpos($endpoint, 'creation-fields'), 500, 'No filters on forms');
+        abort_if(strpos($endpoint, 'update-fields'), 500, 'No filters on forms');
+
         $this->novaFilterResponse = new NovaResponse(
             $this->parent->getJson("$endpoint/filters"),
             $this->novaParameters,

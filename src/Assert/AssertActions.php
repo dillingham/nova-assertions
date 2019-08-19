@@ -68,6 +68,9 @@ trait AssertActions
             $endpoint = str_replace("/$resourceId", '', $endpoint);
         }
 
+        abort_if(strpos($endpoint, 'creation-fields'), 500, 'No actions on forms');
+        abort_if(strpos($endpoint, 'update-fields'), 500, 'No actions on forms');
+
         $this->novaActionResponse = new NovaResponse(
             $this->parent->getJson($endpoint),
             $this->novaParameters,

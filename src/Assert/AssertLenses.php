@@ -62,6 +62,9 @@ trait AssertLenses
 
         extract($this->novaParameters);
 
+        abort_if(strpos($endpoint, 'creation-fields'), 500, 'No lenses on forms');
+        abort_if(strpos($endpoint, 'update-fields'), 500, 'No lenses on forms');
+
         $this->novaLensResponse = new NovaResponse(
             $this->parent->getJson("$endpoint/lenses"),
             $this->novaParameters,

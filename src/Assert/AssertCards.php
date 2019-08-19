@@ -66,6 +66,9 @@ trait AssertCards
             $endpoint = "$endpoint?resourceId=$resourceId";
         }
 
+        abort_if(strpos($endpoint, 'creation-fields'), 500, 'No cards on forms');
+        abort_if(strpos($endpoint, 'update-fields'), 500, 'No cards on forms');
+
         $this->novaCardResponse = new NovaResponse(
             $this->parent->getJson($endpoint),
             $this->novaParameters,
