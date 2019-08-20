@@ -222,14 +222,24 @@ $response->assertFieldsExclude(['id' => 1, 'email' => 'example']);
 ```
 ### Assert Relations
 ```php
-$this->novaCreate('posts')
-    ->assertRelation('categories', function($categories) {
-        //
-    });
+// App\Nova\Post
+// BelongsTo::make('Category'),
 ```
 ```php
-$this->novaDetail('categories')
-    ->assertRelation('posts', function($posts) {
-        //
-    });
+$response = $this->novaCreate('posts');
+
+$response->assertRelation('categories', function($categories) {
+    //
+});
+```
+```php
+// App\Nova\Category
+// HasMany::make('Posts'),
+```
+```php
+$response = $this->novaDetail('categories');
+
+$response->assertRelation('posts', function($posts) {
+    //
+});
 ```
