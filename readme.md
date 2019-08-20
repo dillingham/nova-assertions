@@ -37,10 +37,9 @@ public function testNova()
     $this->be(factory(User::class)->create());
 
     $response = $this->novaIndex('users');
-    
-    $response->assertCanUpdate();
-    $response->assertCannotDelete()
-    $response->assertFieldsInclude('email')
+
+    $response->assertResourceCount(1);
+    $response->assertFieldsInclude('email');
     $response->assertActionsInclude(Action::class);
 }
 ```
