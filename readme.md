@@ -17,6 +17,8 @@ Assert:
 [Fields](https://github.com/dillingham/nova-assertions#assert-fields) |
 [Relations](https://github.com/dillingham/nova-assertions#assert-relations)
 
+---
+
 ### Installation
 
 ```
@@ -31,6 +33,8 @@ class UserTest extends TestCase
     use NovaAssertions;
 }
 ```
+
+---
 
 ### Authentication
 Log in a user that **[has access to Nova](https://nova.laravel.com/docs/2.0/installation.html#authorizing-nova)**
