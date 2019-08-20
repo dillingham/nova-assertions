@@ -52,7 +52,7 @@ $this->be(factory(User::class)->create());
 
 ### Nova Requests
 
-Request Nova's results with one of the following:
+Request using a resource's uriKey to perform assertions:
 
 ```php
 $response = $this->novaIndex('users');
