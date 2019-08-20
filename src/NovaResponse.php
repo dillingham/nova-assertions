@@ -8,11 +8,13 @@ use NovaTesting\Assert\AssertLenses;
 use NovaTesting\Assert\AssertActions;
 use NovaTesting\Assert\AssertFilters;
 use NovaTesting\Assert\AssertPolicies;
+use NovaTesting\Assert\AssertRelations;
 use NovaTesting\Assert\AssertResources;
 
 class NovaResponse
 {
     use AssertResources,
+        AssertRelations,
         AssertPolicies,
         AssertFilters,
         AssertActions,

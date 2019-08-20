@@ -12,7 +12,8 @@ Quick links:
 [Filters](https://github.com/dillingham/nova-assertions#assert-filters) |
 [Lenses](https://github.com/dillingham/nova-assertions#assert-lenses) |
 [Resources](https://github.com/dillingham/nova-assertions#assert-resources) |
-[Fields](https://github.com/dillingham/nova-assertions#assert-fields)
+[Fields](https://github.com/dillingham/nova-assertions#assert-fields) |
+[Relations](https://github.com/dillingham/nova-assertions#assert-relations)
 
 ### Installation
 
@@ -218,4 +219,17 @@ $response->assertFields(function($fields) {
 Also `exclude` works in all of these scenarios
 ```php
 $response->assertFieldsExclude(['id' => 1, 'email' => 'example']);
+```
+### Assert Relations
+```php
+$this->novaCreate('posts')
+    ->assertRelations('categories', function($categories) {
+        //
+    });
+```
+```php
+$this->novaDetail('categories')
+    ->assertRelations('posts', function($posts) {
+        //
+    });
 ```
