@@ -84,27 +84,14 @@ You can call **[http response methods](https://laravel.com/docs/5.8/http-tests#a
 ```php
 $response->assertOk();
 ```
-
-### Assert Policies
-
-Assert **[Nova's use of policies](https://nova.laravel.com/docs/2.0/resources/authorization.html#authorization)** & the authed user:
-
+### Assert Resources
 ```php
-$response->assertCanView();
-
-$response->assertCanCreate();
-
-$response->assertCanUpdate();
-
-$response->assertCanDelete();
-
-$response->assertCanForceDelete();
-
-$response->assertCanRestore();
+$response->assertResourceCount(3);
 ```
-Also can assert `cannot` for each:
 ```php
-$response->assertCannotView();
+$response->assertResources(function($resources) {
+    return $resources->count() > 0;
+});
 ```
 
 ### Assert Cards
@@ -168,15 +155,6 @@ $response->assertLenses(function($lenses) {
     return $lenses->count() > 0;
 });
 ```
-### Assert Resources
-```php
-$response->assertResourceCount(3);
-```
-```php
-$response->assertResources(function($resources) {
-    return $resources->count() > 0;
-});
-```
 ### Assert Fields
 ```php
 $response->assertFieldCount(5);
@@ -234,3 +212,27 @@ $response->assertRelation('posts', function($posts) {
     //
 });
 ```
+
+### Assert Policies
+
+Assert **[Nova's use of policies](https://nova.laravel.com/docs/2.0/resources/authorization.html#authorization)** & the authed user:
+
+```php
+$response->assertCanView();
+
+$response->assertCanCreate();
+
+$response->assertCanUpdate();
+
+$response->assertCanDelete();
+
+$response->assertCanForceDelete();
+
+$response->assertCanRestore();
+```
+Also can assert `cannot` for each:
+```php
+$response->assertCannotView();
+```
+
+
