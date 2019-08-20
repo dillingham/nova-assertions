@@ -223,13 +223,13 @@ $response->assertFieldsExclude(['id' => 1, 'email' => 'example']);
 ### Assert Relations
 ```php
 $this->novaCreate('posts')
-    ->assertRelations('categories', function($categories) {
+    ->assertRelation('categories', function($categories) {
         //
     });
 ```
 ```php
 $this->novaDetail('categories')
-    ->assertRelations('posts', function($posts) {
+    ->assertRelation('posts', function($posts) {
         //
     });
 ```
