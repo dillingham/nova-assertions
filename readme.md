@@ -5,8 +5,7 @@
 
 Nova requests & assertions for Laravel tests - [View examples](https://github.com/dillingham/nova-assertions/tree/master/examples)
 
-![carbon (4)](https://user-images.githubusercontent.com/29180903/63384224-63d07180-c36c-11e9-852b-f024dc9661cf.png)
-
+![testing tdd laravel nova](https://user-images.githubusercontent.com/29180903/63385407-e3f7d680-c36e-11e9-96f8-6ebbe48bd62b.png)
 
 Assert:
 [Policies](https://github.com/dillingham/nova-assertions#assert-policies) |
