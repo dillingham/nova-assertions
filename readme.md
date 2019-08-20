@@ -5,6 +5,9 @@
 
 Nova requests & assertions for Laravel tests - [View examples](https://github.com/dillingham/nova-assertions/tree/master/examples)
 
+![carbon (4)](https://user-images.githubusercontent.com/29180903/63384224-63d07180-c36c-11e9-852b-f024dc9661cf.png)
+
+
 Assert:
 [Policies](https://github.com/dillingham/nova-assertions#assert-policies) |
 [Cards](https://github.com/dillingham/nova-assertions#assert-cards) |
@@ -27,20 +30,6 @@ use NovaTesting\NovaAssertions;
 class UserTest extends TestCase
 {
     use NovaAssertions;
-}
-```
-
-### Usage Example
-```php
-public function testNova()
-{
-    $this->be(factory(User::class)->create());
-
-    $response = $this->novaIndex('users');
-
-    $response->assertResourceCount(1);
-    $response->assertFieldsInclude('email');
-    $response->assertActionsInclude(Action::class);
 }
 ```
 
