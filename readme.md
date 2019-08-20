@@ -3,7 +3,7 @@
 [![Latest Version on Github](https://img.shields.io/github/release/dillingham/nova-assertions.svg?style=flat-square)](https://packagist.org/packages/dillingham/nova-assertions)
 [![Total Downloads](https://img.shields.io/packagist/dt/dillingham/nova-assertions.svg?style=flat-square)](https://packagist.org/packages/dillingham/nova-assertions)
 
-Nova requests & assertions for Laravel tests
+Nova requests & assertions for Laravel tests - [View examples](https://github.com/dillingham/nova-assertions/tree/master/examples)
 
 Assert:
 [Policies](https://github.com/dillingham/nova-assertions#assert-policies) |
