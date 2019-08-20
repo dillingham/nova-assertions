@@ -56,17 +56,13 @@ Request Nova's results with one of the following:
 
 ```php
 $response = $this->novaIndex('users');
-```
-```php
+
 $response = $this->novaDetail('users', $user->id);
-```
-```php
+
 $response = $this->novaCreate('users');
-```
-```php
+
 $response = $this->novaEdit('users', $user->id);
-```
-```php
+
 $response = $this->novaLens('users', Lens::class);
 ```
 
@@ -95,20 +91,15 @@ The following assert against the auth user & **[Nova's use of policies](https://
 
 ```php
 $response->assertCanView();
-```
-```php
+
 $response->assertCanCreate();
-```
-```php
+
 $response->assertCanUpdate();
-```
-```php
+
 $response->assertCanDelete();
-```
-```php
+
 $response->assertCanForceDelete();
-```
-```php
+
 $response->assertCanRestore();
 ```
 Also can assert `cannot` for each:
