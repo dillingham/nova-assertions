@@ -87,7 +87,7 @@ $response->assertOk();
 
 ### Assert Policies
 
-The following assert against the auth user & **[Nova's use of policies](https://nova.laravel.com/docs/2.0/resources/authorization.html#authorization)**
+Assert **[Nova's use of policies](https://nova.laravel.com/docs/2.0/resources/authorization.html#authorization)** & the authed user:
 
 ```php
 $response->assertCanView();
