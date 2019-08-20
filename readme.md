@@ -5,7 +5,7 @@
 
 Nova requests & assertions for Laravel tests
 
-Quick links:
+Assert:
 [Policies](https://github.com/dillingham/nova-assertions#assert-policies) |
 [Cards](https://github.com/dillingham/nova-assertions#assert-cards) |
 [Actions](https://github.com/dillingham/nova-assertions#assert-actions) |
