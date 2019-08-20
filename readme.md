@@ -20,6 +20,7 @@ Assert:
 ```
 composer require dillingham/nova-assertions
 ```
+Enable by adding the `NovaAssertions` to a test
 ```php
 use NovaTesting\NovaAssertions;
 
@@ -28,7 +29,6 @@ class UserTest extends TestCase
     use NovaAssertions;
 }
 ```
-Enable by adding the `NovaAssertions` to a test
 
 ### Usage Example
 ```php
@@ -36,11 +36,12 @@ public function testNova()
 {
     $this->be(factory(User::class)->create());
 
-    $this->novaIndex('users')
-        ->assertCanUpdate()
-        ->assertCannotDelete()
-        ->assertFieldsInclude('email')
-        ->assertFieldsExclude('password');
+    $response = $this->novaIndex('users');
+    
+    $response->assertCanUpdate();
+    $response->assertCannotDelete()
+    $response->assertFieldsInclude('email')
+    $response->assertActionsInclude(Action::class);
 }
 ```
 
