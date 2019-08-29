@@ -11,6 +11,9 @@ use NovaTesting\Assert\AssertPolicies;
 use NovaTesting\Assert\AssertRelations;
 use NovaTesting\Assert\AssertResources;
 
+/**
+ * @mixin \Illuminate\Foundation\Testing\TestResponse
+ */
 class NovaResponse
 {
     use AssertResources,
@@ -49,6 +52,9 @@ class NovaResponse
         return $this;
     }
 
+    /**
+     * @return \Illuminate\Foundation\Testing\TestResponse
+     */
     public function originalResponse()
     {
         return $this->originalJsonResponse;
