@@ -73,8 +73,8 @@ trait NovaAssertions
 
     public function resolveUriKey($class)
     {
-        if (strpos($class, '\\')) {
-            return app($class)->uriKey();
+        if (strpos($class, '\\') && class_exists($class)) {
+            return app($class, [ 'resource' => $class::$model ])->uriKey();
         }
 
         return $class;
