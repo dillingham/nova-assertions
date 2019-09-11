@@ -35,7 +35,7 @@ trait AssertCards
         $this->setNovaCardResponse();
 
         $this->novaCardResponse->assertJsonFragment([
-            'uriKey' => app($class)->uriKey()
+            'component' => class_exists($class) ? app($class)->component() : $class
         ]);
 
         return $this;
@@ -46,7 +46,7 @@ trait AssertCards
         $this->setNovaCardResponse();
 
         $this->novaCardResponse->assertJsonMissing([
-            'uriKey' => app($class)->uriKey()
+            'component' => class_exists($class) ? app($class)->component() : $class
         ]);
 
         return $this;
