@@ -22,7 +22,7 @@ Assert:
 ### Installation
 
 ```
-composer require dillingham/nova-assertions
+composer require dillingham/nova-assertions --dev
 ```
 Enable by adding the `NovaAssertions` to a test
 ```php
