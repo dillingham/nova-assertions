@@ -6,7 +6,7 @@ use closure;
 use NovaTesting\NovaResponse;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\BelongsTo;
-use Illuminate\Foundation\Testing\Assert as PHPUnit;
+use Illuminate\Testing\Assert as PHPUnit;
 
 trait AssertRelations
 {

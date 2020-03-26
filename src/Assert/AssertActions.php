@@ -5,7 +5,7 @@ namespace NovaTesting\Assert;
 use closure;
 use Illuminate\Support\Arr;
 use NovaTesting\NovaResponse;
-use Illuminate\Foundation\Testing\Assert as PHPUnit;
+use Illuminate\Testing\Assert as PHPUnit;
 
 trait AssertActions
 {
