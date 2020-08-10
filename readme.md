@@ -1,7 +1,7 @@
 # Nova Assertions
 
 [![Latest Version on Github](https://img.shields.io/github/release/dillingham/nova-assertions.svg?style=flat-square)](https://packagist.org/packages/dillingham/nova-assertions)
-[![Total Downloads](https://img.shields.io/packagist/dt/dillingham/nova-assertions.svg?style=flat-square)](https://packagist.org/packages/dillingham/nova-assertions) [![Twitter Follow](https://img.shields.io/twitter/follow/dillinghammm?color=%231da1f1&label=Twitter&logo=%231da1f1&logoColor=%231da1f1&style=flat-square)](https://twitter.com/dillinghammm)
+[![Total Downloads](https://img.shields.io/packagist/dt/dillingham/nova-assertions.svg?style=flat-square)](https://packagist.org/packages/dillingham/nova-assertions) [![Twitter Follow](https://img.shields.io/twitter/follow/dillinghammm?color=%231da1f1&label=Twitter&logo=%231da1f1&logoColor=%231da1f1&style=flat-square)](https://twitter.com/im_brian_d)
 
 Nova requests & assertions for Laravel tests - [View examples](https://github.com/dillingham/nova-assertions/tree/master/examples)
 
@@ -228,3 +228,12 @@ $response->assertCannotView();
 ```
 
 
+---
+
+# Author
+
+Hi 👋, Im Brian Dillingham, creator of this Nova package [and others](https://novapackages.com/collaborators/dillingham)
+
+Hope you find it useful. Feel free to reach out with feedback.
+
+Follow me on twitter: [@im_brian_d](https://twitter.com/im_brian_d) 
