@@ -3,6 +3,7 @@
 namespace NovaTesting\Assert;
 
 use closure;
+use Laravel\Nova\Fields\HasOne;
 use NovaTesting\NovaResponse;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\BelongsTo;
@@ -48,12 +49,10 @@ trait AssertRelations
 
         abort_if(is_null($field), 500, 'Field not found');
 
-        if ($field instanceof HasMany) {
-            $endpoint = "nova-api/$key?viaResource=$resource&viaResourceId=$resourceId&viaRelationship=$key&relationshipType=hasMany";
-        }
+        $type = $this->relationshipCollectionType($field);
 
-        if ($field instanceof BelongsToMany) {
-            $endpoint = "nova-api/$key?viaResource=$resource&viaResourceId=$resourceId&viaRelationship=$key&relationshipType=belongsToMany";
+        if ($type) {
+            $endpoint = "nova-api/$key?viaResource=$resource&viaResourceId=$resourceId&viaRelationship=$key&relationshipType=$type";
         }
 
         if ($field instanceof BelongsTo) {
@@ -69,5 +68,22 @@ trait AssertRelations
             $this->novaParameters,
             $this->parent
         );
+    }
+
+    public function relationshipCollectionType($field)
+    {
+        if ($field instanceof HasMany) {
+            return "hasMany";
+        }
+
+        if ($field instanceof BelongsToMany) {
+            return "belongsToMany";
+        }
+
+        if ($field instanceof HasOne) {
+            return "hasOne";
+        }
+
+        return null;
     }
 }
