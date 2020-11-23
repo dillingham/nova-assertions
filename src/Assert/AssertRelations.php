@@ -6,6 +6,7 @@ use closure;
 use NovaTesting\NovaResponse;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Illuminate\Foundation\Testing\Assert as PHPUnit;
 
 trait AssertRelations
@@ -48,7 +49,11 @@ trait AssertRelations
         abort_if(is_null($field), 500, 'Field not found');
 
         if ($field instanceof HasMany) {
-            $endpoint = "nova-api/$key?viaResource=$resource&viaResourceId=$resourceId&viaRelationship=$key";
+            $endpoint = "nova-api/$key?viaResource=$resource&viaResourceId=$resourceId&viaRelationship=$key&relationshipType=hasMany";
+        }
+
+        if ($field instanceof BelongsToMany) {
+            $endpoint = "nova-api/$key?viaResource=$resource&viaResourceId=$resourceId&viaRelationship=$key&relationshipType=belongsToMany";
         }
 
         if ($field instanceof BelongsTo) {
