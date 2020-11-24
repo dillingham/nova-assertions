@@ -12,7 +12,7 @@ trait AssertRelations
 {
     public $novaRelationshipResponse = [];
 
-    public function assertRelation($key, closure $callable)
+    public function assertRelation($key, closure $callable = null)
     {
         $this->setNovaRelationshipResponse($key);
 
@@ -20,7 +20,7 @@ trait AssertRelations
 
         $results = collect(json_decode(json_encode($original['resources'], true)));
 
-        PHPUnit::assertTrue($callable($results));
+        PHPUnit::assertTrue($callable ? $callable($results) ?? true : true);
 
         return $this;
     }
