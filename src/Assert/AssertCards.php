@@ -35,7 +35,7 @@ trait AssertCards
         $this->setNovaCardResponse();
 
         $this->novaCardResponse->assertJsonFragment([
-            'component' => $this->extractComponentName($class)
+            'uriKey' => app($class)->uriKey()
         ]);
 
         return $this;
@@ -46,23 +46,10 @@ trait AssertCards
         $this->setNovaCardResponse();
 
         $this->novaCardResponse->assertJsonMissing([
-            'component' => $this->extractComponentName($class)
+            'uriKey' => app($class)->uriKey()
         ]);
 
         return $this;
-    }
-
-    /**
-     * @param string|\Laravel\Nova\Card $class
-     * @return string
-     */
-    protected function extractComponentName($class)
-    {
-        if (is_object($class)) {
-            return $class->component();
-        }
-
-        return class_exists($class) ? app($class)->component() : $class;
     }
 
     public function setNovaCardResponse()
