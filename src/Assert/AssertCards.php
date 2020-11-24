@@ -4,7 +4,7 @@ namespace NovaTesting\Assert;
 
 use closure;
 use NovaTesting\NovaResponse;
-use Illuminate\Foundation\Testing\Assert as PHPUnit;
+use Illuminate\Testing\Assert as PHPUnit;
 
 trait AssertCards
 {
@@ -35,7 +35,7 @@ trait AssertCards
         $this->setNovaCardResponse();
 
         $this->novaCardResponse->assertJsonFragment([
-            'uriKey' => app($class)->uriKey()
+            'component' => $this->extractComponentName($class)
         ]);
 
         return $this;
@@ -46,10 +46,23 @@ trait AssertCards
         $this->setNovaCardResponse();
 
         $this->novaCardResponse->assertJsonMissing([
-            'uriKey' => app($class)->uriKey()
+            'component' => $this->extractComponentName($class)
         ]);
 
         return $this;
+    }
+
+    /**
+     * @param string|\Laravel\Nova\Card $class
+     * @return string
+     */
+    protected function extractComponentName($class)
+    {
+        if (is_object($class)) {
+            return $class->component();
+        }
+
+        return class_exists($class) ? app($class)->component() : $class;
     }
 
     public function setNovaCardResponse()

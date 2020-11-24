@@ -4,7 +4,7 @@ namespace NovaTesting\Assert;
 
 use Laravel\Nova\Nova;
 use Illuminate\Support\Arr;
-use Illuminate\Foundation\Testing\Assert as PHPUnit;
+use Illuminate\Testing\Assert as PHPUnit;
 
 trait AssertPolicies
 {

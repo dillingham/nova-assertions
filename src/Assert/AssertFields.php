@@ -4,7 +4,7 @@ namespace NovaTesting\Assert;
 
 use closure;
 use Illuminate\Support\Collection;
-use Illuminate\Foundation\Testing\Assert as PHPUnit;
+use Illuminate\Testing\Assert as PHPUnit;
 
 trait AssertFields
 {
