@@ -10,7 +10,7 @@ trait AssertFields
 {
     public function assertFieldCount($amount)
     {
-        $path = isset($this->original['resources']) ? 'resources.0.fields' : 'resource.fields';
+        $path = isset($this->original[ 'resources' ]) ? 'resources.0.fields' : $this->getFieldsPath();
 
         $this->assertJsonCount($amount, $path);
 
@@ -19,15 +19,7 @@ trait AssertFields
 
     public function assertFields(closure $callable)
     {
-        if (isset($this->original['resources'][0]['fields'])) {
-            $path = 'resources.*.fields';
-        } elseif (isset($this->original['resource']['fields'])) {
-            $path = 'resource.fields';
-        } elseif (isset($this->original['fields'])) {
-            $path = 'fields';
-        }
-
-        $fields = collect(json_decode(json_encode(data_get($this->original, $path, []), true)));
+        $fields = collect(json_decode(json_encode(data_get($this->original, $this->getFieldsPath(), []), true)));
 
         PHPUnit::assertTrue($callable($fields));
 
@@ -122,5 +114,19 @@ trait AssertFields
         }
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getFieldsPath()
+    {
+        if ( isset($this->original[ 'resources' ][ 0 ][ 'fields' ]) ) {
+            return 'resources.*.fields';
+        } elseif ( isset($this->original[ 'resource' ][ 'fields' ]) ) {
+            return 'resource.fields';
+        }
+
+        return 'fields';
     }
 }
