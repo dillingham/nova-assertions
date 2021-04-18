@@ -44,7 +44,7 @@ trait AssertFields
         return $this->fieldCheck($attribute, 'assertJsonMissing', $value);
     }
 
-    protected function fieldCheck($attribute,  $method, $value = null)
+    protected function fieldCheck($attribute, $value, $method = null)
     {
         if ($attribute instanceof Collection) {
             $attribute = $attribute->toArray();
