@@ -1,5 +1,5 @@
 {
-    "name": "dillingham/nova-assertions",
+    "name": "khaled-dev/nova-assertions",
     "description": "Nova api testing requests & assertions",
     "type": "library",
     "license": "MIT",
