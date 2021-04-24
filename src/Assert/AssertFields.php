@@ -36,15 +36,15 @@ trait AssertFields
 
     public function assertFieldsInclude($attribute, $value=null)
     {
-        return $this->fieldCheck($attribute, 'assertJsonFragment', $value);
+        return $this->fieldCheck($attribute, $value, 'assertJsonFragment');
     }
 
     public function assertFieldsExclude($attribute, $value=null)
     {
-        return $this->fieldCheck($attribute, 'assertJsonMissing', $value);
+        return $this->fieldCheck($attribute, $value, 'assertJsonMissing');
     }
 
-    protected function fieldCheck($attribute,  $method, $value = null)
+    protected function fieldCheck($attribute, $value, $method = null)
     {
         if ($attribute instanceof Collection) {
             $attribute = $attribute->toArray();
