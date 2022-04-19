@@ -2,11 +2,12 @@
 
 namespace NovaTesting;
 
+use Illuminate\Database\Eloquent\Model;
+use NovaTesting\Assert\AssertActions;
 use NovaTesting\Assert\AssertCards;
 use NovaTesting\Assert\AssertFields;
-use NovaTesting\Assert\AssertLenses;
-use NovaTesting\Assert\AssertActions;
 use NovaTesting\Assert\AssertFilters;
+use NovaTesting\Assert\AssertLenses;
 use NovaTesting\Assert\AssertPolicies;
 use NovaTesting\Assert\AssertRelations;
 use NovaTesting\Assert\AssertResources;
