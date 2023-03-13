@@ -2,97 +2,126 @@
 
 namespace NovaTesting\Assert;
 
-use Laravel\Nova\Nova;
 use Illuminate\Support\Arr;
 use Illuminate\Testing\Assert as PHPUnit;
+use Laravel\Nova\Nova;
 
 trait AssertPolicies
 {
-    public function assertCanCreate()
-    {
-        PHPUnit::assertTrue(
-            collect(Nova::jsonVariables(request())['resources'])
-                ->where('uriKey', $this->novaParameters['resource'])
-                ->first()['authorizedToCreate']
-        );
-    }
-
-    public function assertCannotCreate()
-    {
-        PHPUnit::assertFalse(
-            collect(Nova::jsonVariables(request())['resources'])
-                ->where('uriKey', $this->novaParameters['resource'])
-                ->first()['authorizedToCreate']
-        );
-    }
-
-    public function assertCanDelete()
-    {
-        return $this->assertJsonFragment([
-            'authorizedToDelete' => true
-        ]);
-    }
-
-    public function assertCannotDelete()
-    {
-        return $this->assertJsonFragment([
-            'authorizedToDelete' => false
-        ]);
-    }
-
-    public function assertCanForceDelete()
-    {
-        return $this->assertJsonFragment([
-            'authorizedToForceDelete' => true
-        ]);
-    }
-
-    public function assertCannotForceDelete()
-    {
-        return $this->assertJsonFragment([
-            'authorizedToForceDelete' => false
-        ]);
-    }
-
-    public function assertCanRestore()
-    {
-        return $this->assertJsonFragment([
-            'authorizedToRestore' => true
-        ]);
-    }
-
-    public function assertCannotRestore()
-    {
-        return $this->assertJsonFragment([
-            'authorizedToRestore' => false
-        ]);
-    }
-
-    public function assertCanUpdate()
-    {
-        return $this->assertJsonFragment([
-            'authorizedToUpdate' => true
-        ]);
-    }
-
-    public function assertCannotUpdate()
-    {
-        return $this->assertJsonFragment([
-            'authorizedToUpdate' => false
-        ]);
-    }
-
     public function assertCanView()
     {
-        return $this->assertJsonFragment([
-            'authorizedToView' => true
-        ]);
+        $model = $this->resolveNovaModel();
+
+        PHPUnit::assertTrue($model->authorizedToView);
     }
 
     public function assertCannotView()
     {
-        return $this->assertJsonFragment([
-            'authorizedToView' => false
-        ]);
+        $model = $this->resolveNovaModel();
+
+        PHPUnit::assertFalse($model->authorizedToView);
+    }
+
+    public function assertCanCreate()
+    {
+        $model = $this->resolveNovaModel();
+
+        PHPUnit::assertTrue($model->authorizedToCreate);
+    }
+
+    public function assertCannotCreate()
+    {
+        $model = $this->resolveNovaModel();
+
+        PHPUnit::assertFalse($model->authorizedToCreate);
+    }
+
+    public function assertCanDelete()
+    {
+        $model = $this->resolveNovaModel();
+
+        PHPUnit::assertTrue($model->authorizedToDelete);
+    }
+
+    public function assertCannotDelete()
+    {
+        $model = $this->resolveNovaModel();
+
+        PHPUnit::assertFalse($model->authorizedToDelete);
+    }
+
+    public function assertCanForceDelete()
+    {
+        $model = $this->resolveNovaModel();
+
+        PHPUnit::assertTrue($model->authorizedToForceDelete);
+    }
+
+    public function assertCannotForceDelete()
+    {
+        $model = $this->resolveNovaModel();
+
+        PHPUnit::assertFalse($model->authorizedToForceDelete);
+    }
+
+    public function assertCanRestore()
+    {
+        $model = $this->resolveNovaModel();
+
+        PHPUnit::assertTrue($model->authorizedToRestore);
+    }
+
+    public function assertCannotRestore()
+    {
+        $model = $this->resolveNovaModel();
+
+        PHPUnit::assertFalse($model->authorizedToRestore);
+    }
+
+    public function assertCanUpdate()
+    {
+        $model = $this->resolveNovaModel();
+
+        PHPUnit::assertTrue($model->authorizedToUpdate);
+    }
+
+    public function assertCannotUpdate()
+    {
+        $model = $this->resolveNovaModel();
+
+        PHPUnit::assertFalse($model->authorizedToUpdate);
+    }
+
+    public function assertCanReplicate()
+    {
+        $model = $this->resolveNovaModel();
+
+        PHPUnit::assertTrue($model->authorizedToReplicate);
+    }
+
+    public function assertCannotReplicate()
+    {
+        $model = $this->resolveNovaModel();
+
+        PHPUnit::assertFalse($model->authorizedToReplicate);
+    }
+
+    public function assertCanImpersonate()
+    {
+        $model = $this->resolveNovaModel();
+
+        PHPUnit::assertTrue($model->authorizedToImpersonate);
+    }
+
+    public function assertCannotImpersonate()
+    {
+        $model = $this->resolveNovaModel();
+
+        PHPUnit::assertFalse($model->authorizedToImpersonate);
+    }
+
+    private function resolveNovaModel()
+    {
+        return reset($this->originalResponse()->baseResponse->getData()->resources);
     }
 }
