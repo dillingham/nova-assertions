@@ -24,4 +24,13 @@ trait AssertResources
 
         return $this;
     }
+
+
+    public function assertTotal($amount){
+        $total = collect(json_decode(json_encode(Arr::get($this->original, 'total', []), true)));
+
+        PHPUnit::assertEquals($amount, (int) $total[0]);
+
+        return $this;
+    }
 }

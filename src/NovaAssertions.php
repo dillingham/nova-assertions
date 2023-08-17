@@ -8,12 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 
 trait NovaAssertions
 {
-    public function novaIndex($resource, $filters = [])
+    public function novaIndex($resource, $filters = [], $search = [])
     {
         $resource = $this->resolveUriKey($resource);
-        $filters = $this->makeNovaFilters($resource, $filters);
         $endpoint = "nova-api/$resource";
-        $json = $this->getJson("$endpoint?$filters");
+
+        if (!empty($filters) && !empty($search)) {
+            $filterQuery = $this->makeNovaFilters($resource, $filters);
+            $searchQuery = http_build_query($search);
+            $queryString = "$filterQuery&$searchQuery";
+        } elseif (!empty($filters)) {
+            $queryString = $this->makeNovaFilters($resource, $filters);
+        } elseif (!empty($search)) {
+            $queryString = http_build_query($search);
+        } else {
+            $queryString = '';
+        }
+
+        $json = $this->getJson("$endpoint?$queryString");
 
         return new NovaResponse($json, compact('endpoint', 'resource'), $this);
     }
@@ -56,6 +68,22 @@ trait NovaAssertions
         return new NovaResponse($json, compact('endpoint', 'resource', 'lens'), $this);
     }
 
+    public function novaStore($resource, $data){
+        $resource = $this->resolveUriKey($resource);
+        $endpoint = "/nova-api/$resource?editMode=create&editing=true";
+        $response = $this->post($endpoint, $data);
+
+        return new NovaResponse($response, compact('endpoint', 'resource'), $this);
+    }
+
+    public function novaUpdate($resource, $data, $resourceId){
+        $resource = $this->resolveUriKey($resource);
+        $endpoint = "/nova-api/$resource/$resourceId?editMode=update&editing=true";
+        $response = $this->put($endpoint, $data);
+
+        return new NovaResponse($response, compact('endpoint', 'resource'), $this);
+    }
+
     public function makeNovaFilters($resource, $filters)
     {
         if (empty($filters)) {
@@ -64,7 +92,7 @@ trait NovaAssertions
 
         $encoded = base64_encode(json_encode(
             collect($filters)->map(function ($value, $key) {
-                return ['class' => $key, 'value' => $value];
+                return [$key => $value];
             })->values()
         ));
 
