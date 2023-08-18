@@ -26,7 +26,7 @@ trait AssertResources
     }
 
 
-    public function assertTotal($amount){
+    public function assertTotalData($amount){
         $total = collect(json_decode(json_encode(Arr::get($this->original, 'total', []), true)));
 
         PHPUnit::assertEquals($amount, (int) $total[0]);
