@@ -10,7 +10,7 @@ trait AssertFields
 {
     public function assertFieldCount($amount)
     {
-        $path = isset($this->original['resources']) ? 'resources.0.fields' : 'resource.fields';
+        $path = isset($this->original['resources']) ? 'resources.0.fields' : $this->getFieldsPath();
 
         $this->assertJsonCount($amount, $path);
 
@@ -146,5 +146,19 @@ trait AssertFields
         }
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getFieldsPath()
+    {
+        if ( isset($this->original[ 'resources' ][ 0 ][ 'fields' ]) ) {
+            return 'resources.*.fields';
+        } elseif ( isset($this->original[ 'resource' ][ 'fields' ]) ) {
+            return 'resource.fields';
+        }
+
+        return 'fields';
     }
 }
