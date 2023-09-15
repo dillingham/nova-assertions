@@ -10,7 +10,7 @@ trait AssertFields
 {
     public function assertFieldCount($amount)
     {
-        $path = isset($this->original['resources']) ? 'resources.0.fields' : 'resource.fields';
+        $path = isset($this->original['resources']) ? 'resources.0.fields' : $this->getFieldsPath();
 
         $this->assertJsonCount($amount, $path);
 
@@ -29,7 +29,9 @@ trait AssertFields
 
         $fields = collect(json_decode(json_encode(data_get($this->original, $path, []), true)));
 
-        PHPUnit::assertTrue($callable($fields));
+        $isCallingOk = $callable($fields) ? true : false;
+
+        PHPUnit::assertTrue($isCallingOk);
 
         return $this;
     }
@@ -44,7 +46,7 @@ trait AssertFields
         return $this->fieldCheck($attribute, $value, 'assertJsonMissing');
     }
 
-    protected function fieldCheck($attribute, $value, $method = null)
+    protected function fieldCheck($attribute, $value = null, $method)
     {
         if ($attribute instanceof Collection) {
             $attribute = $attribute->toArray();
@@ -88,6 +90,28 @@ trait AssertFields
             'attribute' => $attribute
         ]);
     }
+    public function assertFieldOptions($attribute, $options,$method)
+    {
+        $formattedOptions = collect($options)->map(function ($value, $label) {
+            return [
+                'label' => $label,
+                'value' => $value,
+            ];
+        })->values()->all();
+
+        return $this->$method([
+            'attribute' => $attribute,
+            'options' => $formattedOptions
+        ]);
+    }
+
+    public function assertFieldRequired($attribute, $required, $method)
+    {
+        return $this->$method([
+            'attribute' => $attribute,
+            'required' => $required
+        ]);
+    }
 
     public function assertFieldValue($attribute, $value, $method)
     {
@@ -122,5 +146,19 @@ trait AssertFields
         }
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getFieldsPath()
+    {
+        if ( isset($this->original[ 'resources' ][ 0 ][ 'fields' ]) ) {
+            return 'resources.*.fields';
+        } elseif ( isset($this->original[ 'resource' ][ 'fields' ]) ) {
+            return 'resource.fields';
+        }
+
+        return 'fields';
     }
 }
