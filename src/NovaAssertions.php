@@ -76,6 +76,14 @@ trait NovaAssertions
         return new NovaResponse($response, compact('endpoint', 'resource'), $this);
     }
 
+    public function novaAction($resource, $action, $data){
+        $resource = $this->resolveUriKey($resource);
+        $endpoint = "/nova-api/$resource/action?action=$action";
+        $response = $this->post($endpoint, $data);
+
+        return new NovaResponse($response, compact('endpoint', 'resource'), $this);
+    }
+
     public function novaUpdate($resource, $data, $resourceId){
         $resource = $this->resolveUriKey($resource);
         $endpoint = "/nova-api/$resource/$resourceId?editMode=update&editing=true";
